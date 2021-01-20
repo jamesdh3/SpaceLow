@@ -49,6 +49,44 @@ public class BasicMovement : MonoBehaviour
             anim.SetBool("isRunning", false);
         }
 
+        if (Input.GetKey("a"))
+        {
+            anim.SetBool("isStrafeL", true);
+        }
+        else
+        {
+            anim.SetBool("isStrafeL", false);
+        }
+
+        if (Input.GetKey("d"))
+        {
+            anim.SetBool("isStrafeR", true);
+        }
+        else
+        {
+            anim.SetBool("isStrafeR", false);
+        }
+
+        if (Input.GetKey("s"))
+        {
+            anim.SetBool("isWalkingBackW", true);
+        }
+        else
+        {
+            anim.SetBool("isWalkingBackW", false);
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            anim.SetBool("isRolling", true);
+        }
+        else
+        {
+            anim.SetBool("isRolling", false);
+        }
+
+
+
         Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         transform.Rotate(Vector3.up, mouseInput.x * rotationSpeed);
         currentCameraHeadRotation = Mathf.Clamp(currentCameraHeadRotation + mouseInput.y * rotationSpeed, minCameraHeadRotation, maxCameraHeadRotation);
