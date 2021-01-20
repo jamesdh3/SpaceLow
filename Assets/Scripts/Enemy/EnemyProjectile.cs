@@ -15,6 +15,7 @@ public class EnemyProjectile : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
         target = new Vector3(player.position.x, player.position.y + 3, player.position.z);
     }
 
@@ -24,15 +25,17 @@ public class EnemyProjectile : MonoBehaviour
         if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            DestroyProjectile();
         }
         
 
-        if (transform.position.x == target.x && transform.position.y == target.y && transform.position.z == target.z && target != null)
+       /* if (transform.position.x == target.x && transform.position.y == target.y && transform.position.z == target.z && target != null)
         {
             GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
             Destroy(explosion, 3f);
             DestroyProjectile();
         }
+       */
     }
 
     private void OnCollisionEnter(Collision other)
@@ -47,7 +50,7 @@ public class EnemyProjectile : MonoBehaviour
 
     void DestroyProjectile()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
     }
 
 }

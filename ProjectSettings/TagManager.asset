@@ -9,6 +9,7 @@ TagManager:
   - QuitButton
   - Platform
   - EnemyProjectile
+  - Turret
   layers:
   - Default
   - TransparentFX
