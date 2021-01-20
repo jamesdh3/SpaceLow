@@ -10,13 +10,12 @@ public class Turret : MonoBehaviour
     private Transform player;
     
     // turret
-    private Transform turret;
+    public Transform turret;
     private Vector3 distance;
     private float distanceFrom;
     private bool isAttacking = false;
     private float fireRate = 0.5f;
     private float nextFire = 0f;
-
     public GameObject projectile;
 
     void Start()
@@ -52,20 +51,10 @@ public class Turret : MonoBehaviour
         {
             if (isAttacking)
             {
-
-                // The enemy isn't blind so it should face the player
-               
-                
-
-                //Shoot
-
                 if (Time.time > nextFire)
                 {
-
                     nextFire = Time.time + fireRate;
-                    transform.position += Time.deltaTime * transform.forward;
-                    Instantiate(projectile, transform.position, Quaternion.identity);
-                    
+                    Instantiate(projectile, turret.transform.position, turret.transform.rotation);
                 }
             }
         }
