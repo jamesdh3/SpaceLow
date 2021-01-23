@@ -34,13 +34,13 @@ public class AIPatrol : MonoBehaviour
 {
     // waiting variables
     [SerializeField] // NOTE: private variables to each object refering to this class 
-    private bool _patrolWaiting;
+    bool _patrolWaiting;
 
     [SerializeField] // private variables to show in Unity editor
-    private float _totalWaitTime;
+    float _totalWaitTime;
 
     [SerializeField] // private variables to show in Unity editor
-    private List<Waypoint> _patrolPoints; // reference to Waypoint class
+    List<Waypoint> _patrolPoints; // reference to Waypoint class
 
     // base behaviors. no other scripts should need reference to 
     private NavMeshAgent _agent;

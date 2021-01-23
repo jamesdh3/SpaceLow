@@ -31,10 +31,6 @@ using UnityEngine.AI;
 public class AIDetect : MonoBehaviour
 {
 
-    // variables
-
-
-
     public void Start() 
     {
 
