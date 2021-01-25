@@ -21,3 +21,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 }
+
+/* This health script can be put on an "enemy" object or a turret, etc. but it must also have a Character Controller.
+ * I thought just having a box collider on the object if it was something static such as turret, would work, but it doesn't,
+ * not without the character controller as well. */
