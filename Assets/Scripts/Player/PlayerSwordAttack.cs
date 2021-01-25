@@ -49,8 +49,6 @@ public class PlayerSwordAttack : MonoBehaviour
     {
         GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
         Destroy(explosion, 3f);
-        Destroy(gameObject);
-
         return;
     }
 }
