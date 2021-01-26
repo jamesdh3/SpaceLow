@@ -18,7 +18,6 @@ public class Turret : MonoBehaviour
     private float nextFire = 0f;
     public GameObject projectile;
 
-    private Animator anim;
 
     void Start()
     {
@@ -27,8 +26,6 @@ public class Turret : MonoBehaviour
 
         // turret
         turret = GameObject.FindWithTag("Turret").transform;
-
-        anim = player.GetComponent<Animator>();
     }
 
     void Update()
@@ -44,12 +41,12 @@ public class Turret : MonoBehaviour
 
         if (distanceFrom < 40f)
         {
-            anim.SetBool("changeColor", true);
+            
             isAttacking = true;
         }
         else
         {
-            anim.SetBool("changeColor", false);
+
             isAttacking = false;
         }
 
