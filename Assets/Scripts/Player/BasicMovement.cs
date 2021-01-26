@@ -154,6 +154,6 @@ public class BasicMovement : MonoBehaviour
 
     public void DeathScreen()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }
