@@ -58,8 +58,14 @@ public class AIMove : MonoBehaviour
     [SerializeField] 
     private Transform _destination;
 
-    // Assign by dragging the GameObject with the other script you want into the inspector before running the game.
+    /* Assign by dragging the GameObject with the other script you want into the inspector before running the game.
+        Don't need public AIPatrol = new AIPatrol(); I think you had? Something like that.  You still want the same script.
+        The script is still on the enemy, it's just split into a separate script to keep the code clean, as you intended.
+        This is also why you were getting a null reference exception error (which you will see a lot) pointed at the Start(); function in the error message.
+        I think it was trying to call Start(); but it didn't know what AIP.Start(); was referring to, hence being null.
+    */
     public AIPatrol objectWithTheScript;
+
 
     // Start is called before the first frame update
     public void Start()
@@ -71,10 +77,7 @@ public class AIMove : MonoBehaviour
         {
             // AIP.Start(); Delete this, but leaving it for you to understand why it didn't work. You need a reference.
 
-            // Here you're assigning the gameobject that has the script - now there's a referenced object.
-            objectWithTheScript = GameObject.FindObjectOfType(typeof(AIPatrol)) as AIPatrol;
-
-            // You're now telling that gameobject to call Start(); function with that script.
+            // You're now telling that gameobject to call Start(); function within that script.
             objectWithTheScript.Start();
         }
         if (_playerInSightRange && !_playerInAttackRange) 
