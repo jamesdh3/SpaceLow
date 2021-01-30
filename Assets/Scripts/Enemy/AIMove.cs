@@ -31,7 +31,19 @@ public class AIMove : MonoBehaviour
 
     private Transform _player; 
 
+    // each enemy needs to be assigned what these variables are 
+    // should allow enemies to patrol on different objects 
     public LayerMask _whatIsGround, _whatIsPlayer; 
+
+    // instance of different components that make up an AI 
+    AIPatrol AIP = new AIPatrol(); 
+    
+    [SerializeField]
+    List<Waypoint> _patrolPoints; 
+
+    AIDetect AID = new AIDetect();
+
+    //private static AIDetect AID;
 
     // Attacking variables 
     [SerializeField]
@@ -44,32 +56,30 @@ public class AIMove : MonoBehaviour
     private bool _playerInSightRange, _playerInAttackRange; 
  
     [SerializeField] 
-    Transform _destination; 
+    private Transform _destination;
 
+    // Assign by dragging the GameObject with the other script you want into the inspector before running the game.
+    public AIPatrol objectWithTheScript;
 
-    private void OnDrawGizmosSelected()
-    /** Aide in visualizing attack range and sight range of AI
-    */
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _sightRange); 
-
-
-    }
     // Start is called before the first frame update
     public void Start()
     {
         _agent = GetComponent<NavMeshAgent>(); 
         _player = GameObject.FindWithTag("Player").transform;
+
         if (!_playerInSightRange && !_playerInAttackRange) 
         {
-            Debug.Log("AI should be patroling");
+            // AIP.Start(); Delete this, but leaving it for you to understand why it didn't work. You need a reference.
+
+            // Here you're assigning the gameobject that has the script - now there's a referenced object.
+            objectWithTheScript = GameObject.FindObjectOfType(typeof(AIPatrol)) as AIPatrol;
+
+            // You're now telling that gameobject to call Start(); function with that script.
+            objectWithTheScript.Start();
         }
         if (_playerInSightRange && !_playerInAttackRange) 
         {
-            Debug.Log("AI should be moving towards player");
+            Debug.Log("AI should be chasing player"); 
         }
         if (_playerInAttackRange && _playerInSightRange) 
         {
@@ -85,7 +95,7 @@ public class AIMove : MonoBehaviour
         }
     }
 
-    void Update() 
+    public void Update() 
     /** continually look for possible states AI. NOTE: could be refactored to its'
         own method. 
         possible states: 
@@ -98,15 +108,20 @@ public class AIMove : MonoBehaviour
         // Check for sight and attack range 
         _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
         _playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsPlayer);
-
+        // AI patrols  
         if (!_playerInSightRange && !_playerInAttackRange) {
-            Debug.Log("AI should be patrooooling");
+            AIP.Update();
+            Debug.Log("patroling");
+
         }
+        // AI detects player 
         if (_playerInSightRange && !_playerInAttackRange) {
-            Debug.Log("AI should be chasing"); 
+            Debug.Log("Chasing player");
+            //AID.ChasePlayer();  
         }
+        // AI attacks player 
         if (_playerInAttackRange && _playerInSightRange) {
-            Debug.Log("AI should be attacking");
+            AttackPlayer(); 
         }
     }
 
@@ -114,15 +129,27 @@ public class AIMove : MonoBehaviour
     /**
     */
     {
+        // stop movement 
+        _agent.SetDestination(transform.position);
 
+        transform.LookAt(_player); 
+
+        if (!_alreadyAttacked)
+        {
+            // shoot or slash enemy slash AI
+            Debug.Log("BANG! BANG!");
+
+            _alreadyAttacked = true; 
+            Invoke(nameof(ResetAttack), _attackDelay); 
+        }
     }
 
-    void ChasePlayer()
-    /** When in sightrange, AI will move towards player
-    */
+
+    private void ResetAttack() 
     {
-
+        _alreadyAttacked = false; 
     }
+
 
     private void SetDestination() 
     {

@@ -33,23 +33,26 @@ using System.Collections.Generic;
 public class AIPatrol : MonoBehaviour
 {
     // waiting variables
-    [SerializeField] // NOTE: private variables to each object refering to this class 
-    bool _patrolWaiting;
+    //[SerializeField] // NOTE: private variables to each object refering to this class 
+    public bool _patrolWaiting;
 
-    [SerializeField] // private variables to show in Unity editor
-    float _totalWaitTime;
+    //[SerializeField] // private variables to show in Unity editor
+    public float _totalWaitTime;
 
-    [SerializeField] // private variables to show in Unity editor
-    List<Waypoint> _patrolPoints; // reference to Waypoint class
+    // [SerializeField] private variables to show in Unity editor
+    public List<Waypoint> _patrolPoints; // reference to Waypoint class
 
     // base behaviors. no other scripts should need reference to 
-    private NavMeshAgent _agent;
-    private int _currentPatrolIndex; // index of PatrolPoints  
-    private bool _traveling;
-    private bool _waiting; 
-    private bool _patrolForward;
-    private float _waitTimer;
+    public NavMeshAgent _agent;
+    public int _currentPatrolIndex; // index of PatrolPoints  
+    public bool _traveling;
+    public bool _waiting; 
+    public bool _patrolForward;
+    public float _waitTimer;
 
+    //[SerializeField]
+    public float _sightRange, _attackRange; 
+    public bool _playerInSightRange, _playerInAttackRange; 
 
     // Start is called before the first frame update
     public void Start()
@@ -81,13 +84,12 @@ public class AIPatrol : MonoBehaviour
     }
 
     // reminder Update is called once per frame. (NOTE: some patrol features may not be wanted here...?)
-    void Update()
+    public void Update()
     /**
         Next possible actions: 
          - travel; wait; or look for next point 
     */
     {
-        
         // agent must be moving. so check if agent is close to static destionation point 
         if (_traveling && _agent.remainingDistance <= 1.0f) // NOTE: adjustment here depending on AI behavior 
         {
@@ -106,7 +108,6 @@ public class AIPatrol : MonoBehaviour
                 SetDestination();
             }
         }
-
         // waiting. adjust wait timer 
         if (_waiting)
         {
@@ -122,7 +123,7 @@ public class AIPatrol : MonoBehaviour
         }
     }
 
-    private void SetDestination() 
+    public void SetDestination() 
     /**  base case: check for the numer of patrol/destination points 
     */
     {
@@ -135,7 +136,7 @@ public class AIPatrol : MonoBehaviour
         }
     }
 
-    private void ChangePatrolPoint() 
+    public void ChangePatrolPoint() 
     /** Select new patrol point from list of possible points 
     */
     {

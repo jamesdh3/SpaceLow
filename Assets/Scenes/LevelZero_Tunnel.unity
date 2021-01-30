@@ -1131,25 +1131,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1480226669}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &595355810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!195 &595355810 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 3739788647113147454, guid: c2bd172907e1e864a98001970ed9307f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1480226669}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595355809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f46ffb80d8d0ee24fbcf38c5f66dc988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _patrolWaiting: 1
-  _totalWaitTime: 2
-  _patrolPoints:
-  - {fileID: 339998359}
-  - {fileID: 1200147134}
-  - {fileID: 1306631516}
-  - {fileID: 1700306701}
 --- !u!136 &595355811
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1164,6 +1151,35 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &595355812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595355809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ffb80d8d0ee24fbcf38c5f66dc988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _patrolWaiting: 0
+  _totalWaitTime: 0
+  _patrolPoints:
+  - {fileID: 339998359}
+  - {fileID: 1200147134}
+  - {fileID: 1306631516}
+  - {fileID: 1700306701}
+  _agent: {fileID: 595355810}
+  _currentPatrolIndex: 0
+  _traveling: 0
+  _waiting: 0
+  _patrolForward: 0
+  _waitTimer: 0
+  _sightRange: 0
+  _attackRange: 0
+  _playerInSightRange: 0
+  _playerInAttackRange: 0
 --- !u!114 &595355813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,10 +1198,16 @@ MonoBehaviour:
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
+  _patrolPoints:
+  - {fileID: 1200147134}
+  - {fileID: 1306631516}
+  - {fileID: 1700306701}
+  - {fileID: 339998359}
   _attackDelay: 0
   _sightRange: 40
   _attackRange: 15
   _destination: {fileID: 339998358}
+  objectWithTheScript: {fileID: 595355812}
 --- !u!1 &697555679
 GameObject:
   m_ObjectHideFlags: 0
