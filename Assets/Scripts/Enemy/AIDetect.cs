@@ -33,11 +33,11 @@ public class AIDetect : MonoBehaviour
     private float _sightRange, _attackRange; 
     private bool _playerInSightRange, _playerInAttackRange; 
     
-
-    // reference to wrapper movement script that'll handle cases outside of scope of this script 
-    //private static AIMove AIM;
     // player and AI 
+    [SerializeField]
     private Transform _player; 
+    
+    [SerializeField]
     private NavMeshAgent _agent; 
 
     public void Start() 
@@ -66,6 +66,7 @@ public class AIDetect : MonoBehaviour
         Vector3 targetPlayer = _player.transform.position; 
         _agent.SetDestination(targetPlayer); 
     }
+
 
 
     private void OnDrawGizmosSelected()

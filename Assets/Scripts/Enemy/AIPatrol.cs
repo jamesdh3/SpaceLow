@@ -33,13 +33,13 @@ using System.Collections.Generic;
 public class AIPatrol : MonoBehaviour
 {
     // waiting variables
-    //[SerializeField] // NOTE: private variables to each object refering to this class 
+    [SerializeField] // NOTE: private variables to each object refering to this class 
     public bool _patrolWaiting;
 
-    //[SerializeField] // private variables to show in Unity editor
+    [SerializeField] // private variables to show in Unity editor
     public float _totalWaitTime;
 
-    // [SerializeField] private variables to show in Unity editor
+    [SerializeField] // private variables to show in Unity editor
     public List<Waypoint> _patrolPoints; // reference to Waypoint class
 
     // base behaviors. no other scripts should need reference to 
@@ -49,10 +49,6 @@ public class AIPatrol : MonoBehaviour
     public bool _waiting; 
     public bool _patrolForward;
     public float _waitTimer;
-
-    //[SerializeField]
-    public float _sightRange, _attackRange; 
-    public bool _playerInSightRange, _playerInAttackRange; 
 
     // Start is called before the first frame update
     public void Start()

@@ -1,4 +1,15 @@
-﻿using System.Collections;
+﻿// EnemyProjectile.cs 
+/** This will handle the different kinds of projectiles 
+
+How it should work: 
+ - booleans are create fcor each projectile type. need to ensure object can't be assigned more than 1
+ 
+*/
+
+
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

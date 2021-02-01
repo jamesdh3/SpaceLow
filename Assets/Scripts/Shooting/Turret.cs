@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    // I copied the Enemy Movement script and just added shooting on top of this, so can use this script for a shooting enemy and it will also handle the basic moving of the enemy towards the player.
+    // I copied the Enemy Movement script and just added shooting on top of this, so can use this script for a shooting enemy 
+    // and it will also handle the basic moving of the enemy towards the player.
 
 
     private Transform player;
