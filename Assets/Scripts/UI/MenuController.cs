@@ -7,6 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public GameObject escape;
     public GameObject returnToMainMenuButton;
+    public GameObject grayBackground;
 
     public bool EscapeMenuOpen;
 
@@ -22,6 +23,7 @@ public class MenuController : MonoBehaviour
 
                 escape.gameObject.SetActive(true);
                 returnToMainMenuButton.SetActive(true);
+                grayBackground.SetActive(true);
             }
             else
             {
@@ -30,6 +32,7 @@ public class MenuController : MonoBehaviour
 
                 escape.gameObject.SetActive(false);
                 returnToMainMenuButton.SetActive(false);
+                grayBackground.SetActive(false);
             }
         }
     }
