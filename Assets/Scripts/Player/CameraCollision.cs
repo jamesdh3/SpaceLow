@@ -27,7 +27,6 @@ public class CameraCollision : MonoBehaviour
         {
             distance = Mathf.Clamp((hit.distance * 0.90f), minDistance, maxDistance);
         }
-
         else
         {
             distance = maxDistance;
