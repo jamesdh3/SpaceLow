@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraCollision : MonoBehaviour
 {
     public float minDistance = 1.0f;
-    public float maxDistance = 4.0f;
+    public float maxDistance = 5.5f;
     public float smooth = 10.0f;
     Vector3 dollyDir;
     public Vector3 dollyDirAdjusted;
