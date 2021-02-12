@@ -15451,7 +15451,7 @@ GameObject:
   - component: {fileID: 5766541182776613705}
   - component: {fileID: 5766541182776613706}
   m_Layer: 0
-  m_Name: customAstro 1
+  m_Name: NewestAstro
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15546,8 +15546,8 @@ MonoBehaviour:
   jumpSpeed: 15
   gravity: 30
   cameraHead: {fileID: 5766541182879173696}
-  maxCameraHeadRotation: 50
-  minCameraHeadRotation: -50
+  maxCameraHeadRotation: 80
+  minCameraHeadRotation: -80
   maxHealth: 3
   currentHealth: 3
   healthBar: {fileID: 0}
