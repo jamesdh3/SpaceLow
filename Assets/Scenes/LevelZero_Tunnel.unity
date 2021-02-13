@@ -11805,7 +11805,7 @@ PrefabInstance:
     - target: {fileID: 2814515466108425920, guid: 3fbe4d4fd77a4d943afca66f2a413aae,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 423.3
+      value: 382
       objectReference: {fileID: 0}
     - target: {fileID: 2814515466108425920, guid: 3fbe4d4fd77a4d943afca66f2a413aae,
         type: 3}
@@ -12161,12 +12161,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1480226669}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &595355810 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 3739788647113147454, guid: c2bd172907e1e864a98001970ed9307f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1480226669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!136 &595355811
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12188,11 +12182,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595355809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f46ffb80d8d0ee24fbcf38c5f66dc988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 0}
+  _player: {fileID: 0}
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _sightRange: 0
+  _attackRange: 0
+  _destination: {fileID: 0}
+  _isRangeAI: 0
+  _isTurretAI: 0
+  _isFighterAI: 0
+  patrolController: {fileID: 0}
+  attackController: {fileID: 0}
   _patrolWaiting: 1
   _totalWaitTime: 2
   _patrolPoints:
@@ -12200,12 +12210,6 @@ MonoBehaviour:
   - {fileID: 1200147134}
   - {fileID: 1306631516}
   - {fileID: 1700306701}
-  _agent: {fileID: 595355810}
-  _currentPatrolIndex: 0
-  _traveling: 0
-  _waiting: 0
-  _patrolForward: 1
-  _waitTimer: 0
 --- !u!114 &595355813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12213,27 +12217,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595355809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f41a03eae9b2d47bfd28673653f3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 0}
+  _player: {fileID: 0}
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
-  _attackDelay: 3
-  _projectile: {fileID: 0}
-  _turretMagMax: 0
   _sightRange: 40
   _attackRange: 20
   _destination: {fileID: 339998358}
-  _isRangeAI: 0
+  _isRangeAI: 1
   _isTurretAI: 0
   _isFighterAI: 0
   patrolController: {fileID: 595355812}
+  attackController: {fileID: 0}
 --- !u!1 &697555679
 GameObject:
   m_ObjectHideFlags: 0
@@ -23358,6 +23362,12 @@ MonoBehaviour:
   m_OriginalMeshObject: {fileID: -2441658414131813105, guid: fedd73b24867f774a877431d47cdf3fe,
     type: 3}
   m_Mode: 0
+--- !u!4 &892449553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2814515466108425920, guid: 3fbe4d4fd77a4d943afca66f2a413aae,
+    type: 3}
+  m_PrefabInstance: {fileID: 458947877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1137292990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45930,6 +45940,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3739788647113147454, guid: c2bd172907e1e864a98001970ed9307f,
+        type: 3}
+      propertyPath: m_Speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739788647113147454, guid: c2bd172907e1e864a98001970ed9307f,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5264890694631929730, guid: c2bd172907e1e864a98001970ed9307f,
         type: 3}
       propertyPath: m_RootOrder
@@ -47050,23 +47070,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f41a03eae9b2d47bfd28673653f3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 2054302773}
+  _player: {fileID: 892449553}
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
-  _attackDelay: 5
-  _projectile: {fileID: 7241923487959210023, guid: e0337b9ef7b1953408558a8f49c35b43,
-    type: 3}
-  _turretMagMax: 0
   _sightRange: 30
-  _attackRange: 30
-  _destination: {fileID: 339998358}
+  _attackRange: 25
+  _destination: {fileID: 0}
   _isRangeAI: 0
   _isTurretAI: 1
   _isFighterAI: 0
   patrolController: {fileID: 2054302772}
+  attackController: {fileID: 2054302774}
 --- !u!114 &2054302772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47079,16 +47098,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46ffb80d8d0ee24fbcf38c5f66dc988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 0}
+  _player: {fileID: 0}
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _sightRange: 0
+  _attackRange: 0
+  _destination: {fileID: 0}
+  _isRangeAI: 0
+  _isTurretAI: 0
+  _isFighterAI: 0
+  patrolController: {fileID: 2054302772}
+  attackController: {fileID: 2054302774}
   _patrolWaiting: 0
-  _totalWaitTime: 1
-  _patrolPoints:
-  - {fileID: 339998359}
-  _agent: {fileID: 2054302773}
-  _currentPatrolIndex: 0
-  _traveling: 0
-  _waiting: 0
-  _patrolForward: 0
-  _waitTimer: 0
+  _totalWaitTime: 0
+  _patrolPoints: []
 --- !u!195 &2054302773
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -47111,6 +47139,39 @@ NavMeshAgent:
   m_BaseOffset: 0.50000006
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2054302774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054302763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a61ac6516df8ad4880f1d9e02628fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 2054302773}
+  _player: {fileID: 892449553}
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _sightRange: 30
+  _attackRange: 25
+  _destination: {fileID: 0}
+  _isRangeAI: 0
+  _isTurretAI: 1
+  _isFighterAI: 0
+  patrolController: {fileID: 2054302772}
+  attackController: {fileID: 0}
+  _attackDelay: 0.5
+  _projectile: {fileID: 7241923487959210023, guid: e0337b9ef7b1953408558a8f49c35b43,
+    type: 3}
+  _turretReloadTime: 5
+  _turretMagMax: 3
 --- !u!1001 &2093846231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47136,7 +47197,7 @@ PrefabInstance:
     - target: {fileID: 7849083303472016456, guid: a2088561340bdcd418c7102cbf2da7a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.4217
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 7849083303472016456, guid: a2088561340bdcd418c7102cbf2da7a8,
         type: 3}
@@ -47178,12 +47239,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7849083303472016459, guid: a2088561340bdcd418c7102cbf2da7a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849083303472016461, guid: a2088561340bdcd418c7102cbf2da7a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7849083303472016462, guid: a2088561340bdcd418c7102cbf2da7a8,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7849083303472016463, guid: a2088561340bdcd418c7102cbf2da7a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849083304548614926, guid: a2088561340bdcd418c7102cbf2da7a8,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7849083304548614926, guid: a2088561340bdcd418c7102cbf2da7a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a2088561340bdcd418c7102cbf2da7a8, type: 3}
 --- !u!1001 &2135708238
 PrefabInstance:

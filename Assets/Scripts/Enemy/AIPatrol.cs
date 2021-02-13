@@ -30,25 +30,24 @@ using UnityEngine;
 using UnityEngine.AI; 
 using System.Collections.Generic;
 
-public class AIPatrol : MonoBehaviour
+public class AIPatrol : AIMove
 {
     // waiting variables
     [SerializeField] // NOTE: private variables to each object refering to this class 
-    public bool _patrolWaiting;
+    private bool _patrolWaiting;
 
     [SerializeField] // private variables to show in Unity editor
-    public float _totalWaitTime;
+    private float _totalWaitTime;
 
     [SerializeField] // private variables to show in Unity editor
-    public List<Waypoint> _patrolPoints; // reference to Waypoint class
+    private List<Waypoint> _patrolPoints; // reference to Waypoint class
 
     // base behaviors. no other scripts should need reference to 
-    public NavMeshAgent _agent;
-    public int _currentPatrolIndex; // index of PatrolPoints  
-    public bool _traveling;
-    public bool _waiting; 
-    public bool _patrolForward;
-    public float _waitTimer;
+    private int _currentPatrolIndex; // index of PatrolPoints  
+    private bool _traveling;
+    private bool _waiting; 
+    private bool _patrolForward;
+    private float _waitTimer;
 
     // Start is called before the first frame update
     public void Start()
@@ -57,7 +56,7 @@ public class AIPatrol : MonoBehaviour
         start Patroling by looking for next destination point. must have > 1 points in scene 
     */
     {
-        _agent = GetComponent<NavMeshAgent>(); // Requirements: Enemies will need this component 
+        //_agent = GetComponent<NavMeshAgent>(); // Requirements: Enemies will need this component 
 
         if (_agent == null) 
         { 

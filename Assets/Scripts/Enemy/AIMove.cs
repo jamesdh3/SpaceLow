@@ -7,6 +7,7 @@
 Methods: 
  - Start() 
  - SetDestination()
+ - ChasePlayer()
 
 How it works: 
 
@@ -25,29 +26,14 @@ public class AIMove : MonoBehaviour
 {
 
     // variables
-    private NavMeshAgent _agent; 
-    private Transform _player; 
+    public NavMeshAgent _agent; 
+    public Transform _player; 
+    //public NavMeshAgent _turret; 
 
     // each enemy needs to be assigned what these variables are 
     // should allow enemies to patrol on different objects 
     [SerializeField]
     private LayerMask _whatIsGround, _whatIsPlayer; 
-
-    // Attacking variables 
-    [SerializeField]
-    private float _attackDelay;
-    private bool _alreadyAttacked;
-    private float _timeBtwShots; 
-
-    // need instance of projectiles 
-    [SerializeField]
-    private GameObject _projectile;
-
-    // turret variables 
-    private Transform _turret; 
-    [SerializeField]
-    private int _turretMagMax;
-    private int _turretMagCount;
 
     // States AI can be in
     [SerializeField]
@@ -58,15 +44,13 @@ public class AIMove : MonoBehaviour
     private Transform _destination;
 
     [SerializeField] 
-    private bool _isRangeAI, _isTurretAI, _isFighterAI;
+    public bool _isRangeAI, _isTurretAI, _isFighterAI;
 
-    /* Assign by dragging the GameObject with the other script you want into the inspector before running the game.
-        Don't need public AIPatrol = new AIPatrol(); I think you had? Something like that.  You still want the same script.
-        The script is still on the enemy, it's just split into a separate script to keep the code clean, as you intended.
-        This is also why you were getting a null reference exception error (which you will see a lot) pointed at the Start(); function in the error message.
-        I think it was trying to call Start(); but it didn't know what AIP.Start(); was referring to, hence being null.
+    /* class features 
     */
     public AIPatrol patrolController;
+    public AIAttack attackController;
+
     //public AIDetect detectController;
 
 
@@ -75,8 +59,10 @@ public class AIMove : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>(); 
         _player = GameObject.FindWithTag("Player").transform;
-        _timeBtwShots = _attackDelay; 
-        _turret = GameObject.FindWithTag("Turret").transform; 
+        // Check for sight and attack range 
+        _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
+        _playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsPlayer);
+        //_turret = GetComponent<NavMeshAgent>(); 
 
         if (!_playerInSightRange && !_playerInAttackRange) 
         {
@@ -91,12 +77,7 @@ public class AIMove : MonoBehaviour
         if (_playerInAttackRange && _playerInSightRange) 
         {
             Debug.Log("AI should be attacking");
-        }
-        if (_agent == null) 
-
-
-        {
-            // navmesh component needed 
+            attackController.AttackPlayer();
         }
         else 
         {
@@ -106,7 +87,7 @@ public class AIMove : MonoBehaviour
 
     public void Update() 
     /** continually look for possible states AI. NOTE: could be refactored to its'
-        own method. 
+        own method. SHould just check what enemy, and wh
         possible states: 
          - patrol
          - chase
@@ -127,91 +108,12 @@ public class AIMove : MonoBehaviour
         // AI detects player and chases. Exceptions: turret 
         if (_playerInSightRange && !_playerInAttackRange & !_isTurretAI) {
             Debug.Log("Chasing player");
-            ChasePlayer(); 
+            ChasePlayer(); // should be refactored to its own class once this feature needs to be further develoepd 
         }
         // AI attacks player 
-        if (_playerInAttackRange && _playerInSightRange) {
-            AttackPlayer(); 
+        if (_playerInAttackRange && _playerInSightRange) { 
+            attackController.AttackPlayer(); //AttackPlayer(); 
         }
-    }
-
-    void AttackPlayer() 
-    /** Main Attack function that will handle which attack animation an AI should do 
-        possible attacks: 
-         - turret attack (i.e _isTurretAI)
-         - AI shoots (i.e _isRangeAI)
-         - AI close combat attack (i.e _isFighterAI)
-    */
-    {
-        // enforce only 1 can be selected at a time 
-        if (_isRangeAI && !_isTurretAI && !_isFighterAI) {
-            Debug.Log("Bang Bang!");
-            AIShoot();
-        }
-        else if (_isTurretAI && !_isRangeAI && !_isFighterAI) { 
-            Debug.Log("Turret go BRRRRrrrRRRR");
-            TurretShoot(); 
-        }
-        else if (_isFighterAI && !_isTurretAI && !_isRangeAI) { 
-            Debug.Log("Slash attack goes here");
-        }
-        else {
-            Debug.Log("ERROR: unknown attack state");
-        }
-    }
-
-
-
-    void TurretShoot() 
-    /** TODO: get reloading feature to work 
-        Known issues:
-         - turret doesn't stop shooting when player is in range 
-         - turret changes color in Level0...? 
-    */
-    {
-        // look at player 
-        transform.LookAt(_player); 
-        _turretMagCount = _turretMagMax;
-
-        // turret shoots without delay <X> times and reloads 
-        if (_turretMagCount > 0) {
-            Instantiate(_projectile, transform.position, Quaternion.identity); 
-            _turretMagCount -= 1;
-        }
-        else if (_turretMagCount <= 0) {
-            _alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), _timeBtwShots); 
-            _turretMagCount = _turretMagMax; 
-
-        }
-    }
-
-
-    void AIShoot() 
-    /** Method for typicaly AI enemies that can shoot projectiles in a straight line 
-
-        possible Feature requests:
-         - lob shot
-         - grenade launcher method + lob shot   
-    */
-    {
-         // stop movement 
-        _agent.SetDestination(transform.position);
-        transform.LookAt(_player); 
-        // enemy shooting
-        if (!_alreadyAttacked)
-        {
-            Instantiate(_projectile, transform.position, Quaternion.identity);
-            //_timeBtwShots = _attackDelay;
-            _alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), _attackDelay);
-        }
-    }
-
-
-    void ResetAttack() 
-    {
-        _alreadyAttacked = false; 
     }
 
     void ChasePlayer()
@@ -229,6 +131,18 @@ public class AIMove : MonoBehaviour
             Vector3 targetVector = _destination.transform.position; 
             _agent.SetDestination(targetVector); 
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    /** Aide in visualizing attack range and sight range of AI
+    */
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _sightRange); 
+
+
     }
 
 }
