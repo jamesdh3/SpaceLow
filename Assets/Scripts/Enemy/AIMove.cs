@@ -102,7 +102,6 @@ public class AIMove : MonoBehaviour
         // AI patrols  
         if (!_playerInSightRange && !_playerInAttackRange & !_isTurretAI) {
             patrolController.Update(); 
-            Debug.Log("patroling");
 
         }
         // AI detects player and chases. Exceptions: turret 

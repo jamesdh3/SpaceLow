@@ -46,7 +46,7 @@ public class AIPatrol : AIMove
     private int _currentPatrolIndex; // index of PatrolPoints  
     private bool _traveling;
     private bool _waiting; 
-    private bool _patrolForward;
+    private bool _patrolForward=true;
     private float _waitTimer;
 
     // Start is called before the first frame update
@@ -135,6 +135,8 @@ public class AIPatrol : AIMove
     /** Select new patrol point from list of possible points 
     */
     {
+        Debug.Log("patrol point is...");
+        Debug.Log(_currentPatrolIndex);
         // set next patrol point. need a check for end of list 
         if (_patrolForward) // NOTE: boolean here in case you want to move to mix it up and move to previous patrol point 
         {

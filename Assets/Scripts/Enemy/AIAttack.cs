@@ -23,7 +23,7 @@ public class AIAttack : AIMove  {
     private float _attackDelay;
     private bool _alreadyAttacked;
 
-   // need instance of projectiles 
+    // need instance of projectiles 
     [SerializeField]
     private GameObject _projectile;
     
