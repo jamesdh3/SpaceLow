@@ -46,10 +46,14 @@ public class AIMove : MonoBehaviour
     [SerializeField] 
     public bool _isRangeAI, _isTurretAI, _isFighterAI;
 
+    //[SerializeField]
+    //private float health; 
+
     /* class features 
     */
     public AIPatrol patrolController;
     public AIAttack attackController;
+
 
     //public AIDetect detectController;
 
@@ -144,4 +148,23 @@ public class AIMove : MonoBehaviour
 
     }
 
+    /*
+    public void TakeDamage(int damage) 
+    {
+        health -= damage; 
+
+        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+    }
+
+    private void DestroyEnemy() { 
+        Destroy(gameObject); 
+    }
+
+    void OnCollisionEnter(Collision collision) { 
+        if (collision.gameObject.tag == "PlayerSword") { 
+            Debug.Log("YOU HURT THE ENEMY");
+            TakeDamage(1); 
+        }
+    }
+    */
 }

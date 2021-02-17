@@ -11,6 +11,7 @@ TagManager:
   - EnemyProjectile
   - Turret
   - TurretColor
+  - PlayerSword
   layers:
   - Default
   - TransparentFX

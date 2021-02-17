@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: e96af7f829424d444b0010c2ef2a6d28
   - enabled: 1
+    path: Assets/Scenes/LevelZero_Tunnel.unity
+    guid: 1c030cd84c8045a429eaeb3ceaf8b176
+  - enabled: 1
+    path: Assets/Scenes/Transition_0_1.unity
+    guid: 1efcef639f801ad47b8728c2e640aa6e
+  - enabled: 1
     path: Assets/Scenes/LevelOne.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1

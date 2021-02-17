@@ -30,6 +30,7 @@ public class SceneTransition : MonoBehaviour
         }
     }
 
+
     public IEnumerator FadeCo()
     {
         if (fadeOutPanel != null)

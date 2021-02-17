@@ -15,6 +15,7 @@ public class bullet : MonoBehaviour
     [SerializeField]
     private float _bulletDuration, _bulletSpeed;
     private float _lifeTimer;
+    public GameObject collisionExplosion;
 
     private void Start()
     {
@@ -28,6 +29,16 @@ public class bullet : MonoBehaviour
         _lifeTimer -= Time.deltaTime; 
         if (_lifeTimer <= 0f) { 
             Destroy(gameObject); // for whatever is calling this script 
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(explosion, 2f);
         }
     }
 }
