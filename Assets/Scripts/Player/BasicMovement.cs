@@ -146,10 +146,7 @@ public class BasicMovement : MonoBehaviour
         if (currentHealth < 1)
         {
             DeathScreen();
-
-            // re-enable mouse cursor
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            reEnableMouseCursor();
         }
     }
 
@@ -169,5 +166,10 @@ public class BasicMovement : MonoBehaviour
         SceneManager.LoadScene(6);
     }
 
+    void reEnableMouseCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
 }
