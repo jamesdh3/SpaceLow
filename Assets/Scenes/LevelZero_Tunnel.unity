@@ -14504,10 +14504,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraMoveSpeed: 240
   CameraFollowObj: {fileID: 755530276}
-  clampAngle: 90
+  clampAngle: 80
   inputSensitivity: 100
-  CameraObj: {fileID: 755530276}
-  PlayerObj: {fileID: 755530276}
+  CameraObj: {fileID: 0}
+  PlayerObj: {fileID: 0}
   camDistanceXToPlayer: 0
   camDistanceYToPlayer: 0
   camDistanceZToPlayer: 0
@@ -29554,7 +29554,7 @@ GameObject:
   - component: {fileID: 2119455998}
   - component: {fileID: 2119455997}
   - component: {fileID: 2119455996}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

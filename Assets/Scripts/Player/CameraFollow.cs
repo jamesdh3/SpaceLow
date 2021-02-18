@@ -9,7 +9,9 @@ public class CameraFollow : MonoBehaviour
     Vector3 FollowPOS;
     public float clampAngle = 80.0f;
     public float inputSensitivity = 150.0f;
+    [HideInInspector]
     public GameObject CameraObj;
+    [HideInInspector]
     public GameObject PlayerObj;
     public float camDistanceXToPlayer;
     public float camDistanceYToPlayer;
