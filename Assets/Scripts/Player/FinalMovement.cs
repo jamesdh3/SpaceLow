@@ -13,7 +13,6 @@ public class FinalMovement : MonoBehaviour
     public float jumpSpeed = 15.0f;
     public float gravity = 30.0f;
 
-
     // Health bar
     public int maxHealth = 3;
     public int currentHealth;
@@ -25,45 +24,31 @@ public class FinalMovement : MonoBehaviour
     // Animator
     public Animator anim;
 
-
+    // Controls turning of the camera with the mouse
     private float currentCameraHeadRotation = 0;
     private float maxCameraHeadRotation = 80.0f;
     private float minCameraHeadRotation = -80.0f;
     public Transform followTarget;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         anim = GetComponent<Animator>();
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         playAnimations();
-
-        Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        transform.Rotate(Vector3.up, mouseInput.x * rotationSpeed);
-        // followTarget.Rotate(Vector3.right, mouseInput.y * rotationSpeed);
-
-        currentCameraHeadRotation = Mathf.Clamp(currentCameraHeadRotation + mouseInput.y * rotationSpeed, minCameraHeadRotation, maxCameraHeadRotation);
-        followTarget.localRotation = Quaternion.identity;
-        followTarget.Rotate(Vector3.left, currentCameraHeadRotation);
-
-
-
+        playerCameraMouseStrafe();
         jump();
 
         // Movement
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         yVelocity -= gravity * Time.deltaTime;
         controller.Move(transform.TransformDirection(input.normalized * speed * Time.deltaTime + yVelocity * Vector3.up * Time.deltaTime));
-
+        // Sprint
         if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.currentStamina > 0.1f)
         {
             controller.Move(transform.TransformDirection(input.normalized * speed * sprint * Time.deltaTime + yVelocity * Vector3.up * Time.deltaTime));
@@ -143,6 +128,18 @@ public class FinalMovement : MonoBehaviour
         }
     }
 
+    void playerCameraMouseStrafe()
+    {
+        // Control left and right turning of camera/player with mouse
+        Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        transform.Rotate(Vector3.up, mouseInput.x * rotationSpeed);
+
+        // Control up and down turning of camera with mouse
+        currentCameraHeadRotation = Mathf.Clamp(currentCameraHeadRotation + mouseInput.y * rotationSpeed, minCameraHeadRotation, maxCameraHeadRotation);
+        followTarget.localRotation = Quaternion.identity;
+        followTarget.Rotate(Vector3.left, currentCameraHeadRotation);
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -154,7 +151,6 @@ public class FinalMovement : MonoBehaviour
         }
     }
 
-    // Deals damage to player based upon colliding with an object that has "Sword" tag.
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Sword" || collision.gameObject.tag == "EnemyProjectile")
