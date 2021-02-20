@@ -17,13 +17,19 @@ public class Footsteps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (controller.isGrounded == true && controller.velocity.magnitude >2f && audioSrc.isPlaying == false)
-        //{
-        //    audioSrc.volume = Random.Range(0.5f, 0.8f);
-        //    audioSrc.pitch = Random.Range(0.7f, 1.1f);
-        //    audioSrc.Play();
-        //}
+
     }
 
+    // This is function is being called using the Animation Events.  Go to Animation tab and select run animation, then at the top of bar you will see I created two events
+    // which connect to this function.  It's set to play each time a foot hits the ground.
+    void Step()
+    {
+        if (controller.isGrounded == true && controller.velocity.magnitude >2f && audioSrc.isPlaying == false)
+        {
+            audioSrc.volume = Random.Range(0.5f, 0.8f);
+            audioSrc.pitch = Random.Range(0.7f, 1.1f);
+            audioSrc.Play();
+        }
+    }
 
 }
