@@ -41687,7 +41687,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1004069877}
     - target: {fileID: 3619140530733279206, guid: 08eedb93675c1dc4eb90d0f3c996a38f,
         type: 3}
       propertyPath: _attackDelay
@@ -41961,7 +41961,7 @@ PrefabInstance:
     - target: {fileID: 4756419420920260043, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
       propertyPath: _sightRange
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4756419420920260043, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
@@ -42040,9 +42040,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
+      propertyPath: _sightRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
+        type: 3}
       propertyPath: _destination
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1004069877}
     - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
       propertyPath: _isFighterAI
@@ -42056,7 +42061,7 @@ PrefabInstance:
     - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
       propertyPath: _patrolPoints.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
