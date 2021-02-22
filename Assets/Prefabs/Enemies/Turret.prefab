@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 768441098386637051}
   - component: {fileID: 768441098386637053}
   - component: {fileID: 768441098663568098}
-  - component: {fileID: 768441098663568097}
   - component: {fileID: 768441098663568096}
+  - component: {fileID: 768441098663568097}
   - component: {fileID: 768441098663568089}
-  - component: {fileID: 768441100071088137}
   m_Layer: 0
   m_Name: Turret
   m_TagString: TurretColor
@@ -32,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768441098386636932}
-  m_LocalRotation: {x: -0, y: -0.2672956, z: -0, w: 0.9636146}
+  m_LocalRotation: {x: 0, y: -0.26729724, z: 0, w: 0.96361417}
   m_LocalPosition: {x: 445.18, y: 45.444, z: 390.69}
   m_LocalScale: {x: 1, y: 2.8434, z: 1}
   m_Children:
@@ -135,40 +134,6 @@ NavMeshAgent:
   m_BaseOffset: 0.50000006
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &768441098663568097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768441098386636932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a61ac6516df8ad4880f1d9e02628fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _agent: {fileID: 768441098663568098}
-  _player: {fileID: 0}
-  _whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  _sightRange: 35
-  _attackRange: 35
-  _destination: {fileID: 0}
-  _isRangeAI: 0
-  _isTurretAI: 1
-  _isFighterAI: 0
-  health: 3
-  patrolController: {fileID: 0}
-  attackController: {fileID: 768441098663568097}
-  _attackDelay: 0.5
-  _projectile: {fileID: 7241923487959210023, guid: e0337b9ef7b1953408558a8f49c35b43,
-    type: 3}
-  _turretReloadTime: 2
-  _turretMagMax: 3
 --- !u!114 &768441098663568096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,9 +160,41 @@ MonoBehaviour:
   _isRangeAI: 0
   _isTurretAI: 1
   _isFighterAI: 0
-  health: 0
   patrolController: {fileID: 768441098663568089}
   attackController: {fileID: 768441098663568097}
+--- !u!114 &768441098663568097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768441098386636932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a61ac6516df8ad4880f1d9e02628fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 768441098663568098}
+  _player: {fileID: 0}
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _sightRange: 0
+  _attackRange: 0
+  _destination: {fileID: 0}
+  _isRangeAI: 0
+  _isTurretAI: 1
+  _isFighterAI: 0
+  patrolController: {fileID: 768441098663568089}
+  attackController: {fileID: 768441098663568097}
+  _attackDelay: 0.5
+  _projectile: {fileID: 7241923487959210023, guid: e0337b9ef7b1953408558a8f49c35b43,
+    type: 3}
+  _turretReloadTime: 2
+  _turretMagMax: 3
 --- !u!114 &768441098663568089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +211,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
@@ -224,30 +221,11 @@ MonoBehaviour:
   _isRangeAI: 0
   _isTurretAI: 1
   _isFighterAI: 0
-  health: 0
-  patrolController: {fileID: 0}
-  attackController: {fileID: 0}
+  patrolController: {fileID: 768441098663568089}
+  attackController: {fileID: 768441098663568097}
   _patrolWaiting: 0
   _totalWaitTime: 0
   _patrolPoints: []
---- !u!143 &768441100071088137
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768441098386636932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.0000001
-  m_Radius: 0.49999994
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &768441099454934969
 GameObject:
   m_ObjectHideFlags: 0
