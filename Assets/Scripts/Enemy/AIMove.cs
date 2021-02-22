@@ -114,7 +114,7 @@ public class AIMove : MonoBehaviour
             ChasePlayer(); // should be refactored to its own class once this feature needs to be further develoepd 
         }
         // AI attacks player 
-        if (_playerInAttackRange && _playerInSightRange) { 
+        if (_playerInAttackRange && _playerInSightRange && _player != null) { 
             Debug.Log("TURRET SHOOT");
             attackController.AttackPlayer(); //AttackPlayer(); 
         }
