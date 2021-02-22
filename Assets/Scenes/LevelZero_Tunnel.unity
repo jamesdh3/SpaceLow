@@ -13686,6 +13686,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003709610}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1004069877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8952262501734405057, guid: e31e2cc86f319c24c9f7a1d95586090e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1364667129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1007471887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5572324303030529746, guid: 0bc1e54cb6a53df45911c36c257dfc70,
@@ -19008,6 +19014,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FinalAstro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952262501734405055, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8952262501734405057, guid: e31e2cc86f319c24c9f7a1d95586090e,
         type: 3}
@@ -41941,7 +41952,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1004069877}
     - target: {fileID: 4756419420920260043, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
       propertyPath: _isTurretAI
@@ -41949,8 +41960,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4756419420920260043, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
+      propertyPath: _sightRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756419420920260043, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
+        type: 3}
       propertyPath: _isFighterAI
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756419420920260043, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
+        type: 3}
+      propertyPath: _whatIsGround.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4756419421890330658, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
@@ -42011,7 +42032,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1004069877}
     - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
       propertyPath: _isTurretAI
@@ -42026,6 +42047,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _isFighterAI
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
+        type: 3}
+      propertyPath: _whatIsGround.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4756419421890330687, guid: 041a21d2a32bb014d9fd55d423c8e9d6,
         type: 3}
