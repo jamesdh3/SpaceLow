@@ -5141,7 +5141,7 @@ GameObject:
   - component: {fileID: 8952262500558845510}
   m_Layer: 9
   m_Name: Body.003_Plane.004
-  m_TagString: Untagged
+  m_TagString: PlayerSkinRender
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5178,7 +5178,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 07205bc48e5fa964198d48e82108a68e, type: 3}
+  - {fileID: 2100000, guid: 5817160313cf1284ca6b8fea9cc2b2f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15818,10 +15818,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.003
-  m_Height: 0.024977665
+  m_Radius: 0.0037140509
+  m_Height: 0.02579936
   m_Direction: 1
-  m_Center: {x: 0, y: 0.013231796, z: 0}
+  m_Center: {x: -1.9539339e-11, y: 0.0130396765, z: 0.00071405026}
 --- !u!143 &8952262501734405058
 CharacterController:
   m_ObjectHideFlags: 0
