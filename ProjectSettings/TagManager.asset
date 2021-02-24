@@ -12,6 +12,7 @@ TagManager:
   - Turret
   - TurretColor
   - PlayerSword
+  - PlayerSkinRender
   layers:
   - Default
   - TransparentFX

@@ -30,12 +30,23 @@ public class FinalMovement : MonoBehaviour
     private float minCameraHeadRotation = -80.0f;
     public Transform followTarget;
 
+    // Change color when hit
+    private Renderer rend;
+    private Color red = Color.red;
+    private Color white = Color.white;
+    private Color green = Color.green;
+    private Transform player;
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         anim = GetComponent<Animator>();
+
+        player = GameObject.FindWithTag("PlayerSkinRender").transform;
+        rend = player.GetComponent<Renderer>();
     }
 
     void Update()
@@ -43,6 +54,7 @@ public class FinalMovement : MonoBehaviour
         playAnimations();
         playerCameraMouseStrafe();
         jump();
+
 
         // Movement
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -58,6 +70,11 @@ public class FinalMovement : MonoBehaviour
         {
             controller.Move(transform.TransformDirection(input.normalized * speed * Time.deltaTime + yVelocity * Vector3.up * Time.deltaTime));
         }
+    }
+
+    private void LateUpdate()
+    {
+        flashGreen();
     }
 
     void playAnimations()
@@ -156,6 +173,8 @@ public class FinalMovement : MonoBehaviour
         if (collision.gameObject.tag == "Sword" || collision.gameObject.tag == "EnemyProjectile")
         {
             TakeDamage(1);
+            StartCoroutine(FlashRedWhenHit());
+
             healthBar.SetHealth(currentHealth);
         }
     }
@@ -170,6 +189,36 @@ public class FinalMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+    
+    IEnumerator FlashRedWhenHit()
+    {
+        rend.material.color = red;
+        yield return new WaitForSeconds(0.1f);
+        rend.material.color = white;
+        yield return new WaitForSeconds(0.1f);
+        rend.material.color = red;
+        yield return new WaitForSeconds(0.1f);
+        rend.material.color = white;
+    }
+
+    IEnumerator FlashGreenWhenLowStamina()
+    {
+        rend.material.color = white;
+        
+        yield return new WaitForSeconds(0.09f);
+        rend.material.color = green;
+        yield return new WaitForSeconds(0.09f);
+        rend.material.color = white;
+
+    }
+
+    void flashGreen()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.currentStamina <= 0.2f)
+        {
+            StartCoroutine(FlashGreenWhenLowStamina());
+        }
     }
 
 }

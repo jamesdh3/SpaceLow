@@ -75,12 +75,12 @@ public class AIMove : MonoBehaviour
         }
         if (_playerInSightRange && !_playerInAttackRange) 
         {
-            Debug.Log("AI should be chasing player"); 
+            //Debug.Log("AI should be chasing player"); 
             ChasePlayer();
         }
         if (_playerInAttackRange && _playerInSightRange) 
         {
-            Debug.Log("AI should be attacking");
+            //Debug.Log("AI should be attacking");
             attackController.AttackPlayer();
         }
         else 
@@ -110,7 +110,7 @@ public class AIMove : MonoBehaviour
         }
         // AI detects player and chases. Exceptions: turret 
         if (_playerInSightRange && !_playerInAttackRange & !_isTurretAI) {
-            Debug.Log("Chasing player");
+            //Debug.Log("Chasing player");
             ChasePlayer(); // should be refactored to its own class once this feature needs to be further develoepd 
         }
         // AI attacks player 
