@@ -66,15 +66,15 @@ public class AIAttack : AIMove  {
     {
         // enforce only 1 can be selected at a time 
         if (_isRangeAI && !_isTurretAI && !_isFighterAI) {
-            Debug.Log("Bang Bang!");
+            //Debug.Log("Bang Bang!");
             AIShoot();
         }
         else if (_isTurretAI && !_isRangeAI && !_isFighterAI) { 
-            Debug.Log("Turret go BRRRRrrrRRRR");
+            //Debug.Log("Turret go BRRRRrrrRRRR");
             TurretShoot(); 
         }
         else if (_isFighterAI && !_isTurretAI && !_isRangeAI) { 
-            Debug.Log("Slash attack goes here");
+            //Debug.Log("Slash attack goes here");
         }
         else {
             Debug.Log("ERROR: unknown attack state");

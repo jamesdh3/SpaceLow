@@ -36,6 +36,7 @@ public class bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("COllided");
             GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
             Destroy(gameObject);
             Destroy(explosion, 2f);

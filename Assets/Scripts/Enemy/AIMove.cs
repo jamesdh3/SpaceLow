@@ -115,7 +115,7 @@ public class AIMove : MonoBehaviour
         }
         // AI attacks player 
         if (_playerInAttackRange && _playerInSightRange && _player != null) { 
-            Debug.Log("TURRET SHOOT");
+            //Debug.Log("TURRET SHOOT");
             attackController.AttackPlayer(); //AttackPlayer(); 
         }
     }
