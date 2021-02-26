@@ -37,7 +37,6 @@ public class FinalMovement : MonoBehaviour
     private Color green = Color.green;
     private Transform player;
 
-
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -47,6 +46,8 @@ public class FinalMovement : MonoBehaviour
 
         player = GameObject.FindWithTag("PlayerSkinRender").transform;
         rend = player.GetComponent<Renderer>();
+
+
     }
 
     void Update()
@@ -170,9 +171,13 @@ public class FinalMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        // Take Damage Sound Effect
+        TakeDamageSound scriptDamageSound = GameObject.FindObjectOfType(typeof(TakeDamageSound)) as TakeDamageSound;
+
         if (collision.gameObject.tag == "Sword" || collision.gameObject.tag == "EnemyProjectile")
         {
             TakeDamage(1);
+            scriptDamageSound.TakeDmgSoundEffect();
             StartCoroutine(FlashRedWhenHit());
 
             healthBar.SetHealth(currentHealth);
