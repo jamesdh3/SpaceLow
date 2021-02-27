@@ -37,6 +37,7 @@ public class AIAttack : AIMove  {
     private int _turretMagMax;
     private int _turretMagCount;
     
+    
     public void Start() { 
         _turretMagCount = _turretMagMax;
     }

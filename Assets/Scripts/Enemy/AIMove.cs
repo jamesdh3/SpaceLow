@@ -43,11 +43,10 @@ public class AIMove : MonoBehaviour
     [SerializeField] 
     private Transform _destination;
 
-    [SerializeField] 
-    public bool _isRangeAI, _isTurretAI, _isFighterAI;
-
-    //[SerializeField]
-    //private float health; 
+    public bool _isRangeAI, _isTurretAI, _isFighterAI; 
+    
+    // variable for floating eye enemy 
+    private float _fly_height; 
 
     /* class features 
     */
@@ -63,11 +62,16 @@ public class AIMove : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>(); 
         _player = GameObject.FindWithTag("Player").transform;
+
         // Check for sight and attack range 
         _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
         _playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsPlayer);
-        //_turret = GetComponent<NavMeshAgent>(); 
 
+
+        if (_isRangeAI) { 
+            _fly_height = GetComponent<NavMeshAgent>().baseOffset;
+            _agent.SetDestination(Vector3.up*_fly_height);
+        }
         if (!_playerInSightRange && !_playerInAttackRange) 
         {
             // You're now telling that gameobject to call Start(); function within that script.
@@ -148,24 +152,4 @@ public class AIMove : MonoBehaviour
 
 
     }
-
-    /*
-    public void TakeDamage(int damage) 
-    {
-        health -= damage; 
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-
-    private void DestroyEnemy() { 
-        Destroy(gameObject); 
-    }
-
-    void OnCollisionEnter(Collision collision) { 
-        if (collision.gameObject.tag == "PlayerSword") { 
-            Debug.Log("YOU HURT THE ENEMY");
-            TakeDamage(1); 
-        }
-    }
-    */
 }
