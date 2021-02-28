@@ -30,7 +30,7 @@ public class AIAttack : AIMove  {
     // turret variables 
     //private Transform _turret; 
     private bool _isReloading = false;
-    private Transform barrelTip;
+    private Transform _barrelTip;
     [SerializeField]
     private float _turretReloadTime;
 
@@ -43,7 +43,7 @@ public class AIAttack : AIMove  {
     
     public void Start() { 
         _turretMagCount = _turretMagMax;
-        barrelTip = GameObject.FindWithTag("barrelTip").transform;
+        _barrelTip = GameObject.FindWithTag("barrelTip").transform;
     }
 
 
@@ -99,7 +99,7 @@ public class AIAttack : AIMove  {
 
         // turret shoots similar to AI behavior   
         if (!_alreadyAttacked && _turretMagCount > 0) {
-            Instantiate(_projectile, barrelTip.position, barrelTip.rotation);
+            Instantiate(_projectile, _barrelTip.position, _barrelTip.rotation);
             _turretMagCount --;
             _alreadyAttacked = true; 
             Invoke(nameof(ResetAttack), _attackDelay); 
