@@ -19,7 +19,7 @@ public class bullet : MonoBehaviour
 
     private void Start()
     {
-        _lifeTimer = _bulletDuration; 
+        _lifeTimer = _bulletDuration;
     }
 
     void Update() { 

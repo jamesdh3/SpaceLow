@@ -100,8 +100,6 @@ public class AIAttack : AIMove  {
     {
         cannonBarrel.LookAt(_player.position + yOffset);
 
-        //transform.position = _player.position + new Vector3(0.0f, 2f, 0.0f);
-
         // turret shoots similar to AI behavior   
         if (!_alreadyAttacked && _turretMagCount > 0) {
             Instantiate(_projectile, _barrelTip.position, _barrelTip.rotation);
