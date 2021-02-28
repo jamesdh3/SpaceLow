@@ -125,5 +125,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletDuration: 2
   _bulletSpeed: 25
+  _bullet_spawn_height: 100
   collisionExplosion: {fileID: 890844663828731581, guid: 8f4ef7540a082c8478a585644a1c82ff,
     type: 3}
