@@ -3,7 +3,12 @@ guid: 861b0538a3f2ae14d8c8c0ad00c77880
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Diffuse_Color
+    second: {fileID: 2100000, guid: a667c799653a11e4c8ba3a8b510ebecf, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
