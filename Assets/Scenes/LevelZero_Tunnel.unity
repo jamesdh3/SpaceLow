@@ -6802,6 +6802,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 64605578, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1004069877}
+    - target: {fileID: 64605578, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 8173529029296155503, guid: 1e2a1d719495fb843aa1306fcff0b81b,
+        type: 3}
+    - target: {fileID: 64605579, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1004069877}
     - target: {fileID: 1428129294, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
       propertyPath: _player
       value: 
@@ -6810,6 +6823,15 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1004069877}
+    - target: {fileID: 1428129295, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428129295, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 8173529029296155503, guid: 1e2a1d719495fb843aa1306fcff0b81b,
+        type: 3}
     - target: {fileID: 3865325347087797158, guid: be67342862134ae449bf1f03d6f21b91,
         type: 3}
       propertyPath: m_RootOrder
@@ -6869,6 +6891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TT-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882662529930515257, guid: be67342862134ae449bf1f03d6f21b91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
@@ -19953,6 +19980,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952262501734405058, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952262501734405059, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e31e2cc86f319c24c9f7a1d95586090e, type: 3}

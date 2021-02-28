@@ -31,14 +31,13 @@ public class AIAttack : AIMove  {
     //private Transform _turret; 
     private bool _isReloading = false;
     private Transform _barrelTip;
+    private Vector3 yOffset = new Vector3(0, 3, 0);
     [SerializeField]
     private float _turretReloadTime;
 
     [SerializeField]
     private int _turretMagMax;
     private int _turretMagCount;
-
-   
     
     
     public void Start() { 
@@ -95,7 +94,9 @@ public class AIAttack : AIMove  {
          - turret changes color in Level0...? 
     */
     {
-        transform.LookAt(_player); 
+        transform.LookAt(_player.position + yOffset);
+
+        //transform.position = _player.position + new Vector3(0.0f, 2f, 0.0f);
 
         // turret shoots similar to AI behavior   
         if (!_alreadyAttacked && _turretMagCount > 0) {

@@ -56,6 +56,7 @@ public class AIMove : MonoBehaviour
 
     //public AIDetect detectController;
 
+    
 
     // Start is called before the first frame update
     public void Start()
