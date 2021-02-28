@@ -38,6 +38,10 @@ public class AIAttack : AIMove  {
     [SerializeField]
     private int _turretMagMax;
     private int _turretMagCount;
+
+    // Cannon's Barrel Position
+    [SerializeField]
+    private Transform cannonBarrel;
     
     
     public void Start() { 
@@ -94,7 +98,7 @@ public class AIAttack : AIMove  {
          - turret changes color in Level0...? 
     */
     {
-        transform.LookAt(_player.position + yOffset);
+        cannonBarrel.LookAt(_player.position + yOffset);
 
         //transform.position = _player.position + new Vector3(0.0f, 2f, 0.0f);
 

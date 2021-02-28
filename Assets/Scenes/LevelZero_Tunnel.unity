@@ -6811,6 +6811,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8173529029296155503, guid: 1e2a1d719495fb843aa1306fcff0b81b,
         type: 3}
+    - target: {fileID: 64605578, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: cannonBarrel
+      value: 
+      objectReference: {fileID: 1428129291}
     - target: {fileID: 64605579, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
       propertyPath: _player
       value: 
@@ -6832,6 +6836,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8173529029296155503, guid: 1e2a1d719495fb843aa1306fcff0b81b,
         type: 3}
+    - target: {fileID: 1428129295, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: cannonBarrel
+      value: 
+      objectReference: {fileID: 1428129291}
     - target: {fileID: 3865325347087797158, guid: be67342862134ae449bf1f03d6f21b91,
         type: 3}
       propertyPath: m_RootOrder
@@ -20782,6 +20790,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc1e54cb6a53df45911c36c257dfc70, type: 3}
+--- !u!4 &1428129291 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4251501066478240316, guid: be67342862134ae449bf1f03d6f21b91,
+    type: 3}
+  m_PrefabInstance: {fileID: 500576711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1430304795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5572324303030529746, guid: 0bc1e54cb6a53df45911c36c257dfc70,
