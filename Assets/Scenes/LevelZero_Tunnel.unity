@@ -6807,10 +6807,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1004069877}
     - target: {fileID: 64605578, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64605578, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
       propertyPath: _projectile
       value: 
       objectReference: {fileID: 8173529029296155503, guid: 1e2a1d719495fb843aa1306fcff0b81b,
         type: 3}
+    - target: {fileID: 64605578, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: _attackDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 64605578, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
       propertyPath: cannonBarrel
       value: 
@@ -6819,6 +6827,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1004069877}
+    - target: {fileID: 105105516, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0929
+      objectReference: {fileID: 0}
     - target: {fileID: 1428129294, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
       propertyPath: _player
       value: 
@@ -6836,6 +6848,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8173529029296155503, guid: 1e2a1d719495fb843aa1306fcff0b81b,
         type: 3}
+    - target: {fileID: 1428129295, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
+      propertyPath: _attackDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1428129295, guid: be67342862134ae449bf1f03d6f21b91, type: 3}
       propertyPath: cannonBarrel
       value: 
