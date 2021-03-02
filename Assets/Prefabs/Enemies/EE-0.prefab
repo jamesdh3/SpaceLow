@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: -4478483952750896105}
   m_Layer: 0
   m_Name: main_retina
-  m_TagString: Untagged
+  m_TagString: barrelTip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1131,7 +1131,7 @@ GameObject:
   - component: {fileID: 58450}
   - component: {fileID: 58451}
   m_Layer: 0
-  m_Name: ShooterAI
+  m_Name: EE-0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1303,6 +1303,7 @@ MonoBehaviour:
     type: 3}
   _turretReloadTime: 0
   _turretMagMax: 0
+  cannonBarrel: {fileID: -5614669623846742917}
 --- !u!195 &58451
 NavMeshAgent:
   m_ObjectHideFlags: 0

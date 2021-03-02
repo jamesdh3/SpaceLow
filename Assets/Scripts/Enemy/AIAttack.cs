@@ -47,6 +47,8 @@ public class AIAttack : AIMove  {
     public void Start() { 
         _turretMagCount = _turretMagMax;
         _barrelTip = GameObject.FindWithTag("barrelTip").transform;
+
+
     }
 
 
