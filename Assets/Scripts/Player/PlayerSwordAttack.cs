@@ -10,6 +10,9 @@ public class PlayerSwordAttack : MonoBehaviour
     private GameObject player;
     private Animator anim;
 
+    [SerializeField]
+    private bool canSlash = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +23,10 @@ public class PlayerSwordAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canSlash)
         {
             anim.SetBool("isSlashing", true);
+            StartCoroutine(SlashTimer());
         }
         else
         {
@@ -51,5 +55,11 @@ public class PlayerSwordAttack : MonoBehaviour
         Destroy(explosion, 3f);
         return;
     }
-}
 
+    private IEnumerator SlashTimer()
+    {
+        canSlash = false;
+        yield return new WaitForSeconds(1);
+        canSlash = true;
+    }
+}

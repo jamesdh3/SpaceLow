@@ -115,15 +115,6 @@ public class FinalMovement : MonoBehaviour
         {
             anim.SetBool("isWalkingBackW", false);
         }
-
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            anim.SetBool("isRolling", true);
-        }
-        else
-        {
-            anim.SetBool("isRolling", false);
-        }
     }
 
     void jump()
