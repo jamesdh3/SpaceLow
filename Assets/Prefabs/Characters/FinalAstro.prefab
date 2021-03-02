@@ -5812,6 +5812,7 @@ MonoBehaviour:
   damageDealt: 3
   collisionExplosion: {fileID: 890844663828731581, guid: fd0546d58a250994e8017865b4ad7ef1,
     type: 3}
+  canSlash: 1
 --- !u!1 &8952262501384222827
 GameObject:
   m_ObjectHideFlags: 0
