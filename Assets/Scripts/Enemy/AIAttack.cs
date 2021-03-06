@@ -29,7 +29,6 @@ public class AIAttack : AIMove  {
     
     // turret variables 
     private bool _isReloading = false;
-    [SerializeField]
     private GameObject[] _barrelTips;
     private Vector3 yOffset = new Vector3(0, 3, 0);
     [SerializeField]
