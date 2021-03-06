@@ -28,9 +28,9 @@ public class AIAttack : AIMove  {
     private GameObject _projectile;
     
     // turret variables 
-    //private Transform _turret; 
     private bool _isReloading = false;
-    private Transform _barrelTip;
+    [SerializeField]
+    private GameObject[] _barrelTips;
     private Vector3 yOffset = new Vector3(0, 3, 0);
     [SerializeField]
     private float _turretReloadTime;
@@ -46,24 +46,14 @@ public class AIAttack : AIMove  {
     
     public void Start() { 
         _turretMagCount = _turretMagMax;
-        _barrelTip = GameObject.FindWithTag("barrelTip").transform;
-
-
-    }
-
-
-    public void Update() { 
+        _barrelTips = GameObject.FindGameObjectsWithTag("barrelTip");
     }
 
 
     void Reload()
-    /** 
-    */
     {
-        Debug.Log("Should be reloading");
-        _isReloading = false; 
+       _isReloading = false; 
        _turretMagCount = _turretMagMax; 
-       Debug.Log(_turretMagCount);
     }
 
     public void AttackPlayer() 
@@ -76,15 +66,12 @@ public class AIAttack : AIMove  {
     {
         // enforce only 1 can be selected at a time 
         if (_isRangeAI && !_isTurretAI && !_isFighterAI) {
-            //Debug.Log("Bang Bang!");
             AIShoot();
         }
         else if (_isTurretAI && !_isRangeAI && !_isFighterAI) { 
-            //Debug.Log("Turret go BRRRRrrrRRRR");
             TurretShoot(); 
         }
         else if (_isFighterAI && !_isTurretAI && !_isRangeAI) { 
-            //Debug.Log("Slash attack goes here");
         }
         else {
             Debug.Log("ERROR: unknown attack state");
@@ -97,22 +84,24 @@ public class AIAttack : AIMove  {
     /** TODO: get reloading feature to work 
         Known issues:
          - turret doesn't stop shooting when player is in range 
-         - turret changes color in Level0...? 
     */
     {
         cannonBarrel.LookAt(_player.position + yOffset);
 
         // turret shoots similar to AI behavior   
         if (!_alreadyAttacked && _turretMagCount > 0) {
-            Instantiate(_projectile, _barrelTip.position, _barrelTip.rotation);
-            _turretMagCount --;
-            _alreadyAttacked = true; 
-            Invoke(nameof(ResetAttack), _attackDelay); 
+
+            foreach (GameObject barrelTip in _barrelTips)
+            {
+                Instantiate(_projectile, barrelTip.transform.position, barrelTip.transform.rotation);
+                _turretMagCount--;
+                _alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), _attackDelay);
+            }
         }
 
         // reload 
         if (_turretMagCount <= 0 && !_isReloading) { 
-            Debug.Log("RELOADING");
             _isReloading = true;
             Invoke(nameof(Reload), _turretReloadTime);
         }
@@ -121,12 +110,6 @@ public class AIAttack : AIMove  {
 
 
     void AIShoot() 
-    /** Method for typicaly AI enemies that can shoot projectiles in a straight line 
-
-        possible Feature requests:
-         - lob shot
-         - grenade launcher method + lob shot   
-    */
     {
          // stop movement 
         _agent.SetDestination(transform.position);
@@ -141,13 +124,6 @@ public class AIAttack : AIMove  {
         }
     }
 
-
-    void AIStab()
-    /** tag enemy weapon, and check collider with player
-    */
-    {
-
-    }
     void ResetAttack() 
     {
         _alreadyAttacked = false; 
