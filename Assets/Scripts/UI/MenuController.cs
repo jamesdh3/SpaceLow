@@ -18,7 +18,11 @@ public class MenuController : MonoBehaviour
         {
             if (EscapeMenuOpen == false)
             {
-                GameObject.FindWithTag("Player").GetComponent<MouseLock>().enabled = false;
+                if (GameObject.FindWithTag("Player"))
+                {
+                    GameObject.FindWithTag("Player").GetComponent<MouseLock>().enabled = false;
+                }
+                    
                 EscapeMenuOpen = true;
 
                 escape.gameObject.SetActive(true);
@@ -27,7 +31,11 @@ public class MenuController : MonoBehaviour
             }
             else
             {
-                GameObject.FindWithTag("Player").GetComponent<MouseLock>().enabled = true;
+                if (GameObject.FindWithTag("Player"))
+                {
+                    GameObject.FindWithTag("Player").GetComponent<MouseLock>().enabled = true;
+                }
+                    
                 EscapeMenuOpen = false;
 
                 escape.gameObject.SetActive(false);
