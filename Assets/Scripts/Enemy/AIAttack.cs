@@ -41,11 +41,12 @@ public class AIAttack : AIMove  {
     // Cannon's Barrel Position
     [SerializeField]
     private Transform cannonBarrel;
+    public Transform barrelTip;
     
     
     public void Start() { 
         _turretMagCount = _turretMagMax;
-        _barrelTips = GameObject.FindGameObjectsWithTag("barrelTip");
+       // _barrelTips = GameObject.FindGameObjectsWithTag("barrelTip");
     }
 
 
@@ -88,15 +89,26 @@ public class AIAttack : AIMove  {
         cannonBarrel.LookAt(_player.position + yOffset);
 
         // turret shoots similar to AI behavior   
-        if (!_alreadyAttacked && _turretMagCount > 0) {
+        //if (!_alreadyAttacked && _turretMagCount > 0) {
 
-            foreach (GameObject barrelTip in _barrelTips)
-            {
-                Instantiate(_projectile, barrelTip.transform.position, barrelTip.transform.rotation);
-                _turretMagCount--;
-                _alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), _attackDelay);
-            }
+        //    foreach (GameObject barrelTip in _barrelTips)
+        //    {
+        //        Instantiate(_projectile, barrelTip.transform.position, barrelTip.transform.rotation);
+        //        _turretMagCount--;
+        //        _alreadyAttacked = true;
+        //        Invoke(nameof(ResetAttack), _attackDelay);
+        //    }
+        //}
+
+        if (!_alreadyAttacked && _turretMagCount > 0)
+        {
+
+
+            Instantiate(_projectile, barrelTip.transform.position, barrelTip.transform.rotation);
+            _turretMagCount--;
+            _alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), _attackDelay);
+
         }
 
         // reload 

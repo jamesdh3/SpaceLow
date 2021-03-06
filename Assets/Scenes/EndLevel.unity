@@ -14500,6 +14500,7 @@ MonoBehaviour:
   _turretReloadTime: 0
   _turretMagMax: 2
   cannonBarrel: {fileID: 539555789}
+  barrelTip: {fileID: 1169364591}
 --- !u!114 &539555791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32001,12 +32002,13 @@ MonoBehaviour:
   _isFighterAI: 0
   patrolController: {fileID: 0}
   attackController: {fileID: 1095316237}
-  _attackDelay: 5
+  _attackDelay: 0.1
   _projectile: {fileID: 7241923487959210023, guid: ad0d5e09d8b3d6c45ac68f1e18faec4a,
     type: 3}
   _turretReloadTime: 0
-  _turretMagMax: 0
+  _turretMagMax: 1
   cannonBarrel: {fileID: 4251501066685249342}
+  barrelTip: {fileID: 303398254}
 --- !u!1 &1099006222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fb9f0cce7268ac448837e0b7744fe98a,
