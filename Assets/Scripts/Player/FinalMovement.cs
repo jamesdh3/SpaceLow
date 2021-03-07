@@ -25,9 +25,7 @@ public class FinalMovement : MonoBehaviour
     public Animator anim;
 
     // Controls turning of the camera with the mouse
-    private float currentCameraHeadRotation = 0;
-    private float maxCameraHeadRotation = 80.0f;
-    private float minCameraHeadRotation = -80.0f;
+    private float currentCameraHeadRotation = 0, maxCameraHeadRotation = 80.0f, minCameraHeadRotation = -80.0f;
     public Transform followTarget;
 
     // Change color when hit
@@ -53,13 +51,12 @@ public class FinalMovement : MonoBehaviour
         playerCameraMouseStrafe();
         jump();
 
-
         // Movement
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         yVelocity -= gravity * Time.deltaTime;
         controller.Move(transform.TransformDirection(input.normalized * speed * Time.deltaTime + yVelocity * Vector3.up * Time.deltaTime));
         // Sprint
-        if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.currentStamina > 0.1f)
+        if (Input.GetKey(KeyCode.LeftShift) && controller.velocity.magnitude > 0.1f && StaminaBar.instance.currentStamina > 0.1f)
         {
             controller.Move(transform.TransformDirection(input.normalized * speed * sprint * Time.deltaTime + yVelocity * Vector3.up * Time.deltaTime));
             StaminaBar.instance.UseStamina(0.05f);
