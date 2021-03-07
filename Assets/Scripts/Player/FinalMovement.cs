@@ -43,11 +43,8 @@ public class FinalMovement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         anim = GetComponent<Animator>();
-
         player = GameObject.FindWithTag("PlayerSkinRender").transform;
         rend = player.GetComponent<Renderer>();
-
-
     }
 
     void Update()

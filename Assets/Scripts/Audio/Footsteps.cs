@@ -15,9 +15,9 @@ public class Footsteps : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        Step();
     }
 
     // This is function is being called using the Animation Events.  Go to Animation tab and select run animation, then at the top of bar you will see I created two events
