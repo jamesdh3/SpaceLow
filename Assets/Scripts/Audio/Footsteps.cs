@@ -14,24 +14,20 @@ public class Footsteps : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Step();
     }
 
-    // This is function is being called using the Animation Events.  Go to Animation tab and select run animation, then at the top of bar you will see I created two events
-    // which connect to this function.  It's set to play each time a foot hits the ground.
+    // The proper way to do this is have this function called as an animation event for each time the character's foot touches the ground.
+    // This requires you set it for each animation; forward, back, etc. but it's accurate then.
     void Step()
     {
         if (controller.isGrounded == true && controller.velocity.magnitude >2f && audioSrc.isPlaying == false)
         {
-            audioSrc.volume = Random.Range(0.5f, 0.8f);
+            audioSrc.volume = Random.Range(0.1f, 0.3f);
             audioSrc.pitch = Random.Range(0.7f, 1.1f);
             audioSrc.Play();
         }
     }
-
-    // If I want to remove the event, just delete it from the animation, and then move this function to be called in Update(), then it works for all movements, forwards, back, etc
-
 }
