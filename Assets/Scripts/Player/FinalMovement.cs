@@ -47,7 +47,6 @@ public class FinalMovement : MonoBehaviour
 
     void Update()
     {
-        playAnimations();
         playerCameraMouseStrafe();
         jump();
 
@@ -70,45 +69,6 @@ public class FinalMovement : MonoBehaviour
     private void LateUpdate()
     {
         flashGreen();
-    }
-
-    void playAnimations()
-    {
-        if (Input.GetKey("w"))
-        {
-            anim.SetBool("isRunning", true);
-        }
-        else
-        {
-            anim.SetBool("isRunning", false);
-        }
-
-        if (Input.GetKey("a"))
-        {
-            anim.SetBool("isStrafeL", true);
-        }
-        else
-        {
-            anim.SetBool("isStrafeL", false);
-        }
-
-        if (Input.GetKey("d"))
-        {
-            anim.SetBool("isStrafeR", true);
-        }
-        else
-        {
-            anim.SetBool("isStrafeR", false);
-        }
-
-        if (Input.GetKey("s"))
-        {
-            anim.SetBool("isWalkingBackW", true);
-        }
-        else
-        {
-            anim.SetBool("isWalkingBackW", false);
-        }
     }
 
     void jump()

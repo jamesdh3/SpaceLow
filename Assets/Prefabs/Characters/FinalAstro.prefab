@@ -15765,6 +15765,7 @@ GameObject:
   - component: {fileID: 7745392708657722896}
   - component: {fileID: 1828616435}
   - component: {fileID: 1828616434}
+  - component: {fileID: 1828616436}
   m_Layer: 9
   m_Name: FinalAstro
   m_TagString: Player
@@ -16215,6 +16216,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a719c9ce6f7e99d4c8597fff48336c1e, type: 3}
   - {fileID: 8300000, guid: d10c55b6cf8e5f4439b49de9872e36e8, type: 3}
   thirdAudioSrc: {fileID: 1828616435}
+--- !u!114 &1828616436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952262501734405055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3bed82de53ccbc4f9d1163f617a8deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8952262501869139290
 GameObject:
   m_ObjectHideFlags: 0
