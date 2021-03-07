@@ -1,22 +1,10 @@
-﻿// AIPatrol.cs
-
-/**
-Class: AIPatrol 
-
-Methods: 
- - Start()
- - Update() 
- - SetDestination()
- - ChangePatrolPoint()
-
-How it works; 
+﻿/*
+How it works:
 Set empty GameObjects that will serve as waypoints. agent will move from point A, 
 And to whichever point is set as next. List of possible points shoulds already be set 
 to desired order. AI will then move from point A to point B in a line.
 
-Unity Requirements: 
  - Agents will need NavMeshAgent 
- - also this script if feature is desired 
  
 Additional Features TBD: 
  - walk to nearest point 
@@ -32,31 +20,26 @@ using System.Collections.Generic;
 
 public class AIPatrol : AIMove
 {
-    // waiting variables
-    [SerializeField] // NOTE: private variables to each object refering to this class 
+    [SerializeField]
     private bool _patrolWaiting;
 
-    [SerializeField] // private variables to show in Unity editor
+    [SerializeField]
     private float _totalWaitTime;
 
-    [SerializeField] // private variables to show in Unity editor
+    [SerializeField]
     private List<Waypoint> _patrolPoints; // reference to Waypoint class
 
     // base behaviors. no other scripts should need reference to 
-    private int _currentPatrolIndex; // index of PatrolPoints  
+    private int _currentPatrolIndex;
     private bool _traveling;
     private bool _waiting; 
-    private bool _patrolForward=true;
+    private bool _patrolForward = true;
     private float _waitTimer;
 
     // Start is called before the first frame update
     public void Start()
-    /** 
-        call to all objects needing partol features 
-        start Patroling by looking for next destination point. must have > 1 points in scene 
-    */
     {
-        //_agent = GetComponent<NavMeshAgent>(); // Requirements: Enemies will need this component 
+        //_agent = GetComponent<NavMeshAgent>(); Requirements: Enemies will need this component; must have > 1 points in scene 
 
         if (_agent == null) 
         { 
@@ -93,7 +76,7 @@ public class AIPatrol : AIMove
             // feature for waiting waiting before moving to the next point. idle animation would be needed 
             if (_patrolWaiting) 
             {
-                _waiting=true; // NOTE : OR set idle 
+                _waiting = true; // NOTE : OR set idle 
                 _waitTimer = 0f; 
             }
             // not waiting. look for next point to move to, then move to it 

@@ -1,14 +1,4 @@
-// AIAttack.cs
-/** Handles attack behaviors of AI 
-
-Methods: 
- - AttackPlayer()
- - TurretShoot() 
- - Reload()
- - AIShoot()
- - AIStab()
- - ResetAttack() 
-*/ 
+// Handles attack behaviors of AI 
 
 using System.Collections;
 using System.Collections.Generic;
@@ -18,12 +8,10 @@ using UnityEngine.AI;
 
 public class AIAttack : AIMove  { 
     
-    // Attacking variables 
     [SerializeField]
     private float _attackDelay;
     private bool _alreadyAttacked;
 
-    // need instance of projectiles 
     [SerializeField]
     private GameObject _projectile;
     
@@ -42,11 +30,9 @@ public class AIAttack : AIMove  {
     private Transform cannonBarrel;
     public Transform barrelTip;
     
-    
     public void Start() { 
         _turretMagCount = _turretMagMax;
     }
-
 
     void Reload()
     {
@@ -55,7 +41,7 @@ public class AIAttack : AIMove  {
     }
 
     public void AttackPlayer() 
-    /** Main Attack function that will handle which attack animation an AI should do 
+    /* Main Attack function that will handle which attack animation an AI should do 
         possible attacks: 
          - turret attack (i.e _isTurretAI)
          - AI shoots (i.e _isRangeAI)
@@ -76,10 +62,8 @@ public class AIAttack : AIMove  {
         }
     }
 
-
-
     void TurretShoot() 
-    /** TODO: get reloading feature to work 
+    /* TODO: get reloading feature to work 
         Known issues:
          - turret doesn't stop shooting when player is in range 
     */
@@ -103,7 +87,6 @@ public class AIAttack : AIMove  {
 
     }
 
-
     void AIShoot() 
     {
          // stop movement 
@@ -123,5 +106,4 @@ public class AIAttack : AIMove  {
     {
         _alreadyAttacked = false; 
     }
-
 }

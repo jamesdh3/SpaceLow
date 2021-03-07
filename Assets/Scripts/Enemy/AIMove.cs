@@ -1,15 +1,7 @@
-﻿// AIMove.cs
-/** Wrapper that handles moving AI among different states. AI states:
+﻿/** Wrapper that handles moving AI among different states. AI states:
  - attacking
- - patorling (i.e moving towards destination points)
+ - patroling (i.e moving towards destination points)
  - chasing (i.e moving towards player)
-
-Methods: 
- - Start() 
- - SetDestination()
- - ChasePlayer()
-
-How it works: 
 
 Requiments: 
  - Agents will need NavMeshAgent
@@ -24,14 +16,10 @@ using UnityEngine.AI;
 
 public class AIMove : MonoBehaviour
 {
-
-    // variables
     public NavMeshAgent _agent; 
     public Transform _player; 
-    //public NavMeshAgent _turret; 
 
-    // each enemy needs to be assigned what these variables are 
-    // should allow enemies to patrol on different objects 
+    // allow enemies to patrol on different objects 
     [SerializeField]
     private LayerMask _whatIsGround, _whatIsPlayer; 
 
@@ -48,15 +36,8 @@ public class AIMove : MonoBehaviour
     // variable for floating eye enemy 
     private float _fly_height; 
 
-    /* class features 
-    */
     public AIPatrol patrolController;
     public AIAttack attackController;
-
-
-    //public AIDetect detectController;
-
-    
 
     // Start is called before the first frame update
     public void Start()
@@ -75,7 +56,6 @@ public class AIMove : MonoBehaviour
         }
         if (!_playerInSightRange && !_playerInAttackRange) 
         {
-            // You're now telling that gameobject to call Start(); function within that script.
             patrolController.Start();
         }
         if (_playerInSightRange && !_playerInAttackRange) 
@@ -95,14 +75,6 @@ public class AIMove : MonoBehaviour
     }
 
     public void Update() 
-    /** continually look for possible states AI. NOTE: could be refactored to its'
-        own method. SHould just check what enemy, and wh
-        possible states: 
-         - patrol
-         - chase
-         - attack
-    */
-
     {
         // Check for sight and attack range 
         _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
@@ -121,13 +93,12 @@ public class AIMove : MonoBehaviour
         // AI attacks player 
         if (_playerInAttackRange && _playerInSightRange && _player != null) { 
             //Debug.Log("TURRET SHOOT");
-            attackController.AttackPlayer(); //AttackPlayer(); 
+            attackController.AttackPlayer();
         }
     }
 
     void ChasePlayer()
-    /** When in sightrange, AI will move towards player
-    */
+    // When in sightrange, AI will move towards player
     {
         Vector3 targetPlayer = _player.transform.position; 
         _agent.SetDestination(targetPlayer); 
@@ -143,14 +114,10 @@ public class AIMove : MonoBehaviour
     }
 
     private void OnDrawGizmosSelected()
-    /** Aide in visualizing attack range and sight range of AI
-    */
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _sightRange); 
-
-
     }
 }

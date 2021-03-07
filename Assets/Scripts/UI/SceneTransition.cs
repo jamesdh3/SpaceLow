@@ -20,7 +20,6 @@ public class SceneTransition : MonoBehaviour
         }
     }
 
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
@@ -29,7 +28,6 @@ public class SceneTransition : MonoBehaviour
             SceneManager.LoadScene(sceneToLoad);
         }
     }
-
 
     public IEnumerator FadeCo()
     {
@@ -43,7 +41,6 @@ public class SceneTransition : MonoBehaviour
         {
             yield return null;
         }
-
     }
 }
 

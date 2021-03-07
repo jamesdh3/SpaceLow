@@ -1,12 +1,4 @@
-﻿// bullet.cs
-/** 
-Class bullet 
-
-Handles different types of bullets and its properties  
-
-*/ 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +20,7 @@ public class bullet : MonoBehaviour
         // check if bullet should be destroyed 
         _lifeTimer -= Time.deltaTime; 
         if (_lifeTimer <= 0f) { 
-            Destroy(gameObject); // for whatever is calling this script 
+            Destroy(gameObject);
         }
     }
 
@@ -36,7 +28,6 @@ public class bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Ground")
         {
-            Debug.Log("Collided with Player");
             GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
             Destroy(gameObject);
             Destroy(explosion, 2f);
