@@ -34,9 +34,9 @@ public class bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Ground")
         {
-            Debug.Log("COllided");
+            Debug.Log("Collided with Player");
             GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
             Destroy(gameObject);
             Destroy(explosion, 2f);
