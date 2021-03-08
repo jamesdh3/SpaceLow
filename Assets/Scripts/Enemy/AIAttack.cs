@@ -29,9 +29,13 @@ public class AIAttack : AIMove  {
     [SerializeField]
     private Transform cannonBarrel;
     public Transform barrelTip;
-    
+
+    // Audio
+    AudioSource audioSrc;
+
     public void Start() { 
         _turretMagCount = _turretMagMax;
+        audioSrc = GetComponent<AudioSource>();
     }
 
     void Reload()
@@ -74,6 +78,11 @@ public class AIAttack : AIMove  {
         if (!_alreadyAttacked && _turretMagCount > 0)
         {
             Instantiate(_projectile, barrelTip.transform.position, barrelTip.transform.rotation);
+
+            audioSrc.volume = Random.Range(0.8f, 1.0f);
+            audioSrc.pitch = Random.Range(0.8f, 1.0f);
+            audioSrc.Play();
+
             _turretMagCount--;
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _attackDelay);

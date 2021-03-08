@@ -11,13 +11,17 @@ public class SceneTransition : MonoBehaviour
     public GameObject fadeOutPanel;
     public float fadeWait;
 
-    private void Awake() //Awake gets called before Start
+    private AudioSource audSrc;
+
+    private void Awake()
     {
-        if (fadeInPanel != null)
-        {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, 1);
-        }
+        audSrc = GetComponent<AudioSource>();
+
+        //if (fadeInPanel != null)
+        //{
+        //    GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
+        //    Destroy(panel, 1);
+        //}
     }
 
     public void OnTriggerEnter(Collider other)
@@ -25,22 +29,23 @@ public class SceneTransition : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             StartCoroutine(FadeCo());
-            SceneManager.LoadScene(sceneToLoad);
         }
     }
 
     public IEnumerator FadeCo()
     {
+        audSrc.Play();
         if (fadeOutPanel != null)
         {
             Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
         }
         yield return new WaitForSeconds(fadeWait);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
-        while (!asyncOperation.isDone)
-        {
-            yield return null;
-        }
+        //AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
+        //while (!asyncOperation.isDone)
+        //{
+        //    yield return null;
+        //}
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
 

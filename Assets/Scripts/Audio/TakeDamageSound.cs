@@ -18,7 +18,7 @@ public class TakeDamageSound : MonoBehaviour
     public void TakeDmgSoundEffect()
     {
         AudioClip clip = GetRandomClip();
-        thirdAudioSrc.volume = Random.Range(0.5f, 0.8f);
+        thirdAudioSrc.volume = Random.Range(1.0f, 1.1f);
         thirdAudioSrc.PlayOneShot(clip);
     }
 

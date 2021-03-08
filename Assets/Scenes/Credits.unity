@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 76457100}
   - component: {fileID: 76457099}
   - component: {fileID: 76457098}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: QuitButton
   m_TagString: QuitButton
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 98186522}
   - component: {fileID: 98186524}
   - component: {fileID: 98186523}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ Transform:
   m_Children:
   - {fileID: 2021133128}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &634019884
 GameObject:
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 634019885}
   - component: {fileID: 634019887}
   - component: {fileID: 634019886}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fedd73b24867f774a877431d47cdf3fe,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fedd73b24867f774a877431d47cdf3fe,
         type: 3}
@@ -11764,7 +11764,7 @@ GameObject:
   - component: {fileID: 1012134472}
   - component: {fileID: 1012134474}
   - component: {fileID: 1012134473}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: grayStaminaBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11839,7 +11839,7 @@ GameObject:
   - component: {fileID: 1039595778}
   - component: {fileID: 1039595777}
   - component: {fileID: 1039595776}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11932,7 +11932,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1177222690
 GameObject:
@@ -11979,7 +11979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1193102203
 GameObject:
@@ -11993,7 +11993,7 @@ GameObject:
   - component: {fileID: 1193102207}
   - component: {fileID: 1193102206}
   - component: {fileID: 1193102205}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Stamina Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12104,7 +12104,7 @@ GameObject:
   - component: {fileID: 1291162679}
   - component: {fileID: 1291162681}
   - component: {fileID: 1291162680}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: staminaBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12262,7 +12262,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1482765636
 GameObject:
@@ -12357,7 +12357,7 @@ RectTransform:
   - {fileID: 38554426}
   - {fileID: 1623900276}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12375,7 +12375,7 @@ GameObject:
   - component: {fileID: 1551032280}
   - component: {fileID: 1551032282}
   - component: {fileID: 1551032281}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: healthBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12585,7 +12585,7 @@ GameObject:
   - component: {fileID: 1621250055}
   - component: {fileID: 1621250057}
   - component: {fileID: 1621250056}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: Transparent Gray Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12706,9 +12706,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n\nDeveloped by: Kyle Follendorf and James Harvey\nTools Used:\n\n\t-
-    Unity Game Engine\n\t- Blender for Characters and Scene Modeling\n\t- Mixamo
-    for Animations\n\t- Audacity for Sound Effects\n\nThank you for playing our game!\n"
+  m_text: "\n\nDeveloped by: Kyle Follendorf and James Harvey\nMusic and Sound Effects
+    by: SONNISS (Game Audio GDC)\nTools Used:\n\n\t- Unity Game Engine\n\t- Blender
+    for Characters and Scene Modeling\n\t- Mixamo for Animations\n\t- Audacity for
+    Additional Sound Effects\n\nThank you for playing our game!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12816,7 +12817,7 @@ GameObject:
   - component: {fileID: 1728243476}
   - component: {fileID: 1728243475}
   - component: {fileID: 1728243474}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12925,7 +12926,7 @@ GameObject:
   - component: {fileID: 1788177927}
   - component: {fileID: 1788177929}
   - component: {fileID: 1788177928}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Return Main Menu Button(Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13152,7 +13153,7 @@ GameObject:
   - component: {fileID: 1872471169}
   - component: {fileID: 1872471168}
   - component: {fileID: 1872471167}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Return Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18210,7 +18211,7 @@ GameObject:
   - component: {fileID: 2004572141}
   - component: {fileID: 2004572143}
   - component: {fileID: 2004572142}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: QuitButton(Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23180,7 +23181,7 @@ GameObject:
   - component: {fileID: 2117949043}
   - component: {fileID: 2117949045}
   - component: {fileID: 2117949044}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: grayHealthBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
