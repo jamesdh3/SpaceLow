@@ -32,6 +32,7 @@ public class AIAttack : AIMove  {
 
     // Audio
     AudioSource audioSrc;
+    public ReloadTurretSound reloadTurretAudio;
 
     public void Start() { 
         _turretMagCount = _turretMagMax;
@@ -89,9 +90,17 @@ public class AIAttack : AIMove  {
         }
 
         // reload 
-        if (_turretMagCount <= 0 && !_isReloading) { 
+        if (_turretMagCount <= 0 && !_isReloading)
+        { 
             _isReloading = true;
-            Invoke(nameof(Reload), _turretReloadTime);
+
+            while (_isReloading)
+            {
+                reloadTurretAudio.TurretReloadSound();
+                Invoke(nameof(Reload), _turretReloadTime);
+            } 
+
+
         }
 
     }
