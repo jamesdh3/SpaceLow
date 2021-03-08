@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ReloadTurretSound : MonoBehaviour
 {
-    [SerializeField]
     public AudioSource secondAudioSrc;
 
     // Start is called before the first frame update
@@ -15,6 +14,7 @@ public class ReloadTurretSound : MonoBehaviour
   
     public void TurretReloadSound()
     {
+       // Debug.Log("I should be playng");
         secondAudioSrc.Play();
     }
 }

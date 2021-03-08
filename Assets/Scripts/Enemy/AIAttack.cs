@@ -1,10 +1,7 @@
-// Handles attack behaviors of AI 
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 
 public class AIAttack : AIMove  { 
     
@@ -16,6 +13,7 @@ public class AIAttack : AIMove  {
     private GameObject _projectile;
     
     // turret variables 
+    [SerializeField]
     private bool _isReloading = false;
     private Vector3 yOffset = new Vector3(0, 3, 0);
     [SerializeField]
@@ -31,27 +29,22 @@ public class AIAttack : AIMove  {
     public Transform barrelTip;
 
     // Audio
-    AudioSource audioSrc;
-    public ReloadTurretSound reloadTurretAudio;
+    private AudioSource audioSrc;
+    public ReloadTurretSound turretReloadSound;
 
-    public void Start() { 
+    public void Start() {
+        _isReloading = false;
         _turretMagCount = _turretMagMax;
         audioSrc = GetComponent<AudioSource>();
     }
 
     void Reload()
     {
-       _isReloading = false; 
-       _turretMagCount = _turretMagMax; 
+        _isReloading = false;
+        _turretMagCount = _turretMagMax; 
     }
 
     public void AttackPlayer() 
-    /* Main Attack function that will handle which attack animation an AI should do 
-        possible attacks: 
-         - turret attack (i.e _isTurretAI)
-         - AI shoots (i.e _isRangeAI)
-         - AI close combat attack (i.e _isFighterAI)
-    */
     {
         // enforce only 1 can be selected at a time 
         if (_isRangeAI && !_isTurretAI && !_isFighterAI) {
@@ -68,10 +61,6 @@ public class AIAttack : AIMove  {
     }
 
     void TurretShoot() 
-    /* TODO: get reloading feature to work 
-        Known issues:
-         - turret doesn't stop shooting when player is in range 
-    */
     {
         cannonBarrel.LookAt(_player.position + yOffset);
 
@@ -90,19 +79,12 @@ public class AIAttack : AIMove  {
         }
 
         // reload 
-        if (_turretMagCount <= 0 && !_isReloading)
-        { 
+        if (_turretMagCount <= 0 && !_isReloading) {
+            Debug.Log("Testing if this is being started");
             _isReloading = true;
-
-            while (_isReloading)
-            {
-                reloadTurretAudio.TurretReloadSound();
-                Invoke(nameof(Reload), _turretReloadTime);
-            } 
-
-
+            turretReloadSound.TurretReloadSound();
+            Invoke(nameof(Reload), _turretReloadTime);
         }
-
     }
 
     void AIShoot() 
