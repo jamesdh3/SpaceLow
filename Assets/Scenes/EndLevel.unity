@@ -42166,7 +42166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848695141}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.2, y: 4.2, z: 212.18}
+  m_LocalPosition: {x: 379.7, y: 23.9, z: 256.2}
   m_LocalScale: {x: 6, y: 12, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51748,7 +51748,7 @@ PrefabInstance:
     - target: {fileID: 173581137088171632, guid: 228cf5cb4b829104b9e4719047887adf,
         type: 3}
       propertyPath: _turretMagCount
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 173581137088171632, guid: 228cf5cb4b829104b9e4719047887adf,
         type: 3}
@@ -51760,11 +51760,21 @@ PrefabInstance:
       propertyPath: turretReloadSound
       value: 
       objectReference: {fileID: 8300000, guid: 763ea9c8d6e37b0408ec75e8b3a8ee15, type: 3}
+    - target: {fileID: 173581137088171632, guid: 228cf5cb4b829104b9e4719047887adf,
+        type: 3}
+      propertyPath: _whatIsPlayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 173581137088171633, guid: 228cf5cb4b829104b9e4719047887adf,
         type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 1848695145}
+    - target: {fileID: 173581137088171633, guid: 228cf5cb4b829104b9e4719047887adf,
+        type: 3}
+      propertyPath: _whatIsPlayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 4020812815978562521, guid: 228cf5cb4b829104b9e4719047887adf,
         type: 3}
       propertyPath: m_RootOrder

@@ -21,7 +21,6 @@ public class AIAttack : AIMove  {
 
     [SerializeField]
     private int _turretMagMax;
-    [SerializeField]
     private int _turretMagCount;
 
     // Cannon's Barrel Position
@@ -35,9 +34,14 @@ public class AIAttack : AIMove  {
 
     //public ReloadTurretSound turretReloadSound;
 
-    public void Start() {
-        _isReloading = false;
+    public void Awake()
+    {
         _turretMagCount = _turretMagMax;
+    }
+
+    public void Start()
+    {
+        _isReloading = false;
         audioSrc = GetComponent<AudioSource>();
     }
 
