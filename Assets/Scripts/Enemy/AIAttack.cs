@@ -32,6 +32,7 @@ public class AIAttack : AIMove  {
     // Audio
     public AudioSource audioSrc;
     public AudioClip tracerSound, turretReloadSound;
+
     //public ReloadTurretSound turretReloadSound;
 
     public void Start() {
@@ -83,11 +84,20 @@ public class AIAttack : AIMove  {
             Invoke(nameof(Reload), _turretReloadTime);
         }
 
-        while (_isReloading)
+        if (!_isReloading)
         {
-            audioSrc.PlayOneShot(turretReloadSound, 1);
-            break;
+            //audioSrc.PlayOneShot(turretReloadSound, 0);
         }
+        else
+        {
+            while (_isReloading)
+            {
+                audioSrc.PlayOneShot(turretReloadSound, 1);
+                break;
+            }
+        }
+
+
     }
 
     void ResetAttack()

@@ -51752,6 +51752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173581137088171632, guid: 228cf5cb4b829104b9e4719047887adf,
         type: 3}
+      propertyPath: turretReloadSrc
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 173581137088171632, guid: 228cf5cb4b829104b9e4719047887adf,
+        type: 3}
       propertyPath: turretReloadSound
       value: 
       objectReference: {fileID: 8300000, guid: 763ea9c8d6e37b0408ec75e8b3a8ee15, type: 3}
