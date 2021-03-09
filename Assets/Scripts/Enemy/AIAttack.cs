@@ -17,10 +17,11 @@ public class AIAttack : AIMove  {
     private bool _isReloading = false;
     private Vector3 yOffset = new Vector3(0, 3, 0);
     [SerializeField]
-    private float _turretReloadTime;
+    private int _turretReloadTime;
 
     [SerializeField]
     private int _turretMagMax;
+    [SerializeField]
     private int _turretMagCount;
 
     // Cannon's Barrel Position
@@ -29,8 +30,9 @@ public class AIAttack : AIMove  {
     public Transform barrelTip;
 
     // Audio
-    private AudioSource audioSrc;
-    public ReloadTurretSound turretReloadSound;
+    public AudioSource audioSrc;
+    public AudioClip tracerSound, turretReloadSound;
+    //public ReloadTurretSound turretReloadSound;
 
     public void Start() {
         _isReloading = false;
@@ -38,17 +40,11 @@ public class AIAttack : AIMove  {
         audioSrc = GetComponent<AudioSource>();
     }
 
-    void Reload()
-    {
-        _isReloading = false;
-        _turretMagCount = _turretMagMax; 
-    }
-
     public void AttackPlayer() 
     {
         // enforce only 1 can be selected at a time 
         if (_isRangeAI && !_isTurretAI && !_isFighterAI) {
-            AIShoot();
+            //AIShoot();
         }
         else if (_isTurretAI && !_isRangeAI && !_isFighterAI) { 
             TurretShoot(); 
@@ -69,9 +65,10 @@ public class AIAttack : AIMove  {
         {
             Instantiate(_projectile, barrelTip.transform.position, barrelTip.transform.rotation);
 
-            audioSrc.volume = Random.Range(0.8f, 1.0f);
-            audioSrc.pitch = Random.Range(0.8f, 1.0f);
-            audioSrc.Play();
+            //audioSrc.volume = Random.Range(0.8f, 1.0f);
+            //audioSrc.pitch = Random.Range(0.8f, 1.0f);
+            //audioSrc.Play();
+            audioSrc.PlayOneShot(tracerSound, 1);
 
             _turretMagCount--;
             _alreadyAttacked = true;
@@ -80,13 +77,32 @@ public class AIAttack : AIMove  {
 
         // reload 
         if (_turretMagCount <= 0 && !_isReloading) {
-            Debug.Log("Testing if this is being started");
+            Debug.Log("Reload IF statement being hit");
             _isReloading = true;
-            turretReloadSound.TurretReloadSound();
+            //turretReloadSound.TurretReloadSound();
             Invoke(nameof(Reload), _turretReloadTime);
+        }
+
+        while (_isReloading)
+        {
+            audioSrc.PlayOneShot(turretReloadSound, 1);
+            break;
         }
     }
 
+    void ResetAttack()
+    {
+        _alreadyAttacked = false;
+    }
+
+    void Reload()
+    {
+        _isReloading = false;
+        _turretMagCount = _turretMagMax;
+    }
+
+
+    /*
     void AIShoot() 
     {
          // stop movement 
@@ -101,9 +117,6 @@ public class AIAttack : AIMove  {
             Invoke(nameof(ResetAttack), _attackDelay);
         }
     }
-
-    void ResetAttack() 
-    {
-        _alreadyAttacked = false; 
-    }
+       */
 }
+
