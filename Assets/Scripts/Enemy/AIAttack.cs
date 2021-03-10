@@ -23,16 +23,12 @@ public class AIAttack : AIMove  {
     private int _turretMagMax;
     private int _turretMagCount;
 
-    // Cannon's Barrel Position
     [SerializeField]
     private Transform cannonBarrel;
     public Transform barrelTip;
 
-    // Audio
     public AudioSource audioSrc;
     public AudioClip tracerSound, turretReloadSound;
-
-    //public ReloadTurretSound turretReloadSound;
 
     public void Awake()
     {
@@ -49,7 +45,7 @@ public class AIAttack : AIMove  {
     {
         // enforce only 1 can be selected at a time 
         if (_isRangeAI && !_isTurretAI && !_isFighterAI) {
-            //AIShoot();
+            AIShoot();
         }
         else if (_isTurretAI && !_isRangeAI && !_isFighterAI) { 
             TurretShoot(); 
@@ -115,8 +111,6 @@ public class AIAttack : AIMove  {
         _turretMagCount = _turretMagMax;
     }
 
-
-    /*
     void AIShoot() 
     {
          // stop movement 
@@ -131,6 +125,5 @@ public class AIAttack : AIMove  {
             Invoke(nameof(ResetAttack), _attackDelay);
         }
     }
-       */
 }
 
