@@ -27,7 +27,6 @@ public class AIPatrol : AIMove
         { 
             // nav agent wouldn't be attached to game object
         }
-        
         else
         {
             if (_patrolPoints != null && _patrolPoints.Count >= 2) 
