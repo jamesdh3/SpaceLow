@@ -1,13 +1,10 @@
-﻿// Agents will need Navmesh Agent to move
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class NpcAi : MonoBehaviour
 {
-
     // AI MOVE ***********************
 
     public NavMeshAgent _agentIfNPCMoves;
@@ -21,8 +18,7 @@ public class NpcAi : MonoBehaviour
     [SerializeField]
     private Transform _moveToThisDestination;
     public bool _isRangeAI, _isTurretAI, _isFighterAI;
-    // for flying enemies 
-    private float _fly_height;
+    private float _fly_height; // for flying enemies 
 
     // AI PATROL ***********************
 
@@ -77,27 +73,37 @@ public class NpcAi : MonoBehaviour
     public void Update()
     {
         SetTargetRanges();
+        AiPatrol();
+        AiMoveTowardTarget();
+        AiAttack();
+        checkForDestinationDistance();
+        checkforPatrolWaiting();
+    }
 
-        // AI patrols  
-        if (!_targetInSightRange && !_targetInAttackRange & !_isTurretAI)
-        {
-            checkForDestinationDistance();
-            checkforPatrolWaiting();
-
-        }
-        // AI detects player and chases. Exceptions: turret 
-        if (_targetInSightRange && !_targetInAttackRange & !_isTurretAI)
-        {
-            ChasePlayer();
-        }
-        // AI attacks player 
+    private void AiAttack()
+    {
         if (_targetInAttackRange && _targetInSightRange && _targetTransform != null)
         {
             AttackPlayer();
         }
+    }
 
-        checkForDestinationDistance();
-        checkforPatrolWaiting();
+    private void AiMoveTowardTarget()
+    {
+        // AI detects target and chases. Exceptions: turret 
+        if (_targetInSightRange && !_targetInAttackRange && !_isTurretAI)
+        {
+            ChaseTarget();
+        }
+    }
+
+    private void AiPatrol()
+    {
+        if (!_targetInSightRange && !_targetInAttackRange && !_isTurretAI)
+        {
+            checkForDestinationDistance();
+            checkforPatrolWaiting();
+        }
     }
 
     private void SetTargetRanges()
@@ -121,7 +127,7 @@ public class NpcAi : MonoBehaviour
 
         if (_targetInSightRange && !_targetInAttackRange)
         {
-            ChasePlayer();
+            ChaseTarget();
         }
 
         if (_targetInAttackRange && _targetInSightRange)
@@ -235,7 +241,7 @@ public class NpcAi : MonoBehaviour
         }
         else if (_isFighterAI && !_isTurretAI && !_isRangeAI)
         {
-            // Why is this empty?
+            // This will probably have melee animation or something of that sort.
         }
         else
         {
@@ -303,10 +309,10 @@ public class NpcAi : MonoBehaviour
         }
     }
 
-    void ChasePlayer()
+    void ChaseTarget()
     {
-        Vector3 targetPlayer = _targetTransform.transform.position;
-        _agentIfNPCMoves.SetDestination(targetPlayer);
+        Vector3 target = _targetTransform.transform.position;
+        _agentIfNPCMoves.SetDestination(target);
     }
 
     void SetMoveDestination()
