@@ -18,10 +18,7 @@ public class FinalMovement : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
-    // Controller
     private CharacterController controller;
-
-    // Animator
     public Animator anim;
 
     // Controls turning of the camera with the mouse
@@ -119,12 +116,11 @@ public class FinalMovement : MonoBehaviour
         // Take Damage Sound Effect
         TakeDamageSound scriptDamageSound = GameObject.FindObjectOfType(typeof(TakeDamageSound)) as TakeDamageSound;
 
-        if (collision.gameObject.tag == "Sword" || collision.gameObject.tag == "EnemyProjectile")
+        if (collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("EnemyProjectile"))
         {
             TakeDamage(1);
             scriptDamageSound.TakeDmgSoundEffect();
             StartCoroutine(FlashRedWhenHit());
-
             healthBar.SetHealth(currentHealth);
         }
     }
@@ -155,12 +151,10 @@ public class FinalMovement : MonoBehaviour
     IEnumerator FlashGreenWhenLowStamina()
     {
         rend.material.color = white;
-        
         yield return new WaitForSeconds(0.09f);
         rend.material.color = green;
         yield return new WaitForSeconds(0.09f);
         rend.material.color = white;
-
     }
 
     void flashGreen()

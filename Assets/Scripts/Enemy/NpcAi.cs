@@ -13,7 +13,7 @@ public class NpcAi : MonoBehaviour
     [SerializeField]
     private LayerMask _selectTargetLayer;
     [SerializeField]
-    private float _sightRange, _attackRange;
+    private float _sightRange, _attackRange; // Attack range should always be 0 if you want a melee type enemy
     private bool _targetInSightRange, _targetInAttackRange;
     [SerializeField]
     private Transform _moveToThisDestination;
@@ -53,8 +53,7 @@ public class NpcAi : MonoBehaviour
     public Transform turretEmptyTip;
 
     // GENERAL SOUND ***********************
-    public AudioSource audioSrc;
-    public AudioClip tracerSound, turretReloadSound;
+    public AudioSource audioSrcOne, audioSrcTwo;
 
     public void Awake()
     {
@@ -65,9 +64,8 @@ public class NpcAi : MonoBehaviour
     {
         _agentIfNPCMoves = GetComponent<NavMeshAgent>();
         _isReloading = false;
-        audioSrc = GetComponent<AudioSource>();
         checkRangeStatus();
-        checkForPatrolPoints();
+        CheckForPatrolPoints();
     }
 
     public void Update()
@@ -93,7 +91,7 @@ public class NpcAi : MonoBehaviour
         // AI detects target and chases. Exceptions: turret 
         if (_targetInSightRange && !_targetInAttackRange && !_isTurretAI)
         {
-            ChaseTarget();
+            ChaseTarget(); // Attack range has to be 0 for the melee enemy to continually chase you.
         }
     }
 
@@ -122,7 +120,7 @@ public class NpcAi : MonoBehaviour
 
         if (!_targetInSightRange && !_targetInAttackRange)
         {
-            checkForPatrolPoints();
+            CheckForPatrolPoints();
         }
 
         if (_targetInSightRange && !_targetInAttackRange)
@@ -140,7 +138,7 @@ public class NpcAi : MonoBehaviour
         }
     }
 
-    private void checkForPatrolPoints()
+    private void CheckForPatrolPoints()
     {
         if (_agentIfNPCMoves == null)
         {
@@ -208,8 +206,7 @@ public class NpcAi : MonoBehaviour
 
     public void ChangePatrolPoint()
     {
-        Debug.Log("patrol point is...");
-        Debug.Log(_currentPatrolIndex);
+        Debug.Log("patrol point is..." + _currentPatrolIndex);
         // set next patrol point. need a check for end of list 
         if (_patrolForward) // NOTE: boolean here in case you want to move to mix it up and move to previous patrol point 
         {
@@ -256,7 +253,8 @@ public class NpcAi : MonoBehaviour
         if (!_alreadyAttacked && _turretMagCount > 0)
         {
             Instantiate(_projectile, turretEmptyTip.transform.position, turretEmptyTip.transform.rotation);
-            audioSrc.PlayOneShot(tracerSound, 1);
+            audioSrcOne.Play();
+            audioSrcTwo.Stop();
             _turretMagCount--;
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _attackDelay);
@@ -266,20 +264,8 @@ public class NpcAi : MonoBehaviour
         if (_turretMagCount <= 0 && !_isReloading)
         {
             _isReloading = true;
+            audioSrcTwo.Play();
             Invoke(nameof(Reload), _turretReloadTime);
-        }
-
-        if (!_isReloading)
-        {
-            //audioSrc.PlayOneShot(turretReloadSound, 0);
-        }
-        else
-        {
-            while (_isReloading)
-            {
-                audioSrc.PlayOneShot(turretReloadSound, 1);
-                break;
-            }
         }
     }
 
@@ -304,6 +290,7 @@ public class NpcAi : MonoBehaviour
         if (!_alreadyAttacked)
         {
             Instantiate(_projectile, transform.position, transform.rotation);
+            audioSrcOne.Play();  //Can I reusue same name if this never being called from other AI type?
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _attackDelay);
         }
