@@ -6,12 +6,16 @@ public class PlayerSwordAttack : MonoBehaviour
 {
     public int damageDealt = 3;
     public GameObject collisionExplosion;
-
     private GameObject player;
     private Animator anim;
 
     [SerializeField]
     private bool canSlash = true;
+
+    [SerializeField]
+    private AudioSource impactAudioSource;
+    [SerializeField]
+    private AudioClip[] clips;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +45,7 @@ public class PlayerSwordAttack : MonoBehaviour
         if (health != null)
         {
             health.TakeDamage(damageDealt);
+            ImpactSoundEffects();
             GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
             Destroy(explosion, 3f);
             Debug.Log("Sword is dealing damage");
@@ -62,4 +67,16 @@ public class PlayerSwordAttack : MonoBehaviour
         yield return new WaitForSeconds(1);
         canSlash = true;
     }
+
+    public void ImpactSoundEffects()
+    {
+        AudioClip clip = GetRandomClip();
+        impactAudioSource.PlayOneShot(clip);
+    }
+
+    private AudioClip GetRandomClip()
+    {
+        return clips[Random.Range(0, clips.Length)];
+    }
+
 }

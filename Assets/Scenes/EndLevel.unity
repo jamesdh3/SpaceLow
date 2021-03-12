@@ -31350,6 +31350,108 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042077350}
   m_Mesh: {fileID: 4493585093827132993, guid: 59604514547716f4b87f2d5c587b6d43, type: 3}
+--- !u!1 &1042352565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8952262501379697684, guid: e31e2cc86f319c24c9f7a1d95586090e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1325527062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1042352566
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042352565}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!43 &1049727428
 Mesh:
   m_ObjectHideFlags: 0
@@ -44694,6 +44796,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8952262501379697690, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: clips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952262501379697690, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: impactAudioSource
+      value: 
+      objectReference: {fileID: 1042352566}
+    - target: {fileID: 8952262501379697690, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bd67a5cc8cac6646aa6e5d89dc7ceb8, type: 3}
+    - target: {fileID: 8952262501379697690, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 59f7c02ef3e97e54095125a78d0b96e8, type: 3}
+    - target: {fileID: 8952262501379697690, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 740c61972dc402a46945df3350631fb9, type: 3}
+    - target: {fileID: 8952262501379697690, guid: e31e2cc86f319c24c9f7a1d95586090e,
+        type: 3}
+      propertyPath: clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: e153feb7a0643f74180296fa5c97a005, type: 3}
     - target: {fileID: 8952262501734405053, guid: e31e2cc86f319c24c9f7a1d95586090e,
         type: 3}
       propertyPath: healthBar
