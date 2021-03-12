@@ -61658,6 +61658,7 @@ MonoBehaviour:
   _isRangeAI: 0
   _isTurretAI: 1
   _isFighterAI: 0
+  enemyLaser: {fileID: 0}
   _patrolWaiting: 0
   _totalWaitTime: 0
   _patrolPoints: []
@@ -61668,9 +61669,9 @@ MonoBehaviour:
   _turretMagMax: 5
   turretBarrel: {fileID: 1652602575}
   turretEmptyTip: {fileID: 1780592882}
+  turretSmoke: {fileID: 1181062233}
   audioSrcOne: {fileID: 2038724029}
   audioSrcTwo: {fileID: 2038724028}
-  turretSmoke: {fileID: 1181062233}
 --- !u!114 &2038724031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63731,6 +63732,7 @@ MonoBehaviour:
   _isRangeAI: 1
   _isTurretAI: 0
   _isFighterAI: 0
+  enemyLaser: {fileID: 0}
   _patrolWaiting: 1
   _totalWaitTime: 1
   _patrolPoints:
@@ -63743,9 +63745,9 @@ MonoBehaviour:
   _turretMagMax: 0
   turretBarrel: {fileID: 0}
   turretEmptyTip: {fileID: 0}
+  turretSmoke: {fileID: 0}
   audioSrcOne: {fileID: 3019497937464870872}
   audioSrcTwo: {fileID: 0}
-  turretSmoke: {fileID: 0}
 --- !u!82 &3019497937464870872
 AudioSource:
   m_ObjectHideFlags: 0
@@ -64210,6 +64212,7 @@ GameObject:
   - component: {fileID: 3871296355271163693}
   - component: {fileID: 3871296355271163680}
   - component: {fileID: 3871296355271163691}
+  - component: {fileID: 3871296355271163695}
   m_Layer: 0
   m_Name: LanceEnemyAiScriptTest
   m_TagString: Enemy
@@ -64240,6 +64243,7 @@ MonoBehaviour:
   _isRangeAI: 0
   _isTurretAI: 0
   _isFighterAI: 1
+  enemyLaser: {fileID: 1023685258}
   _patrolWaiting: 0
   _totalWaitTime: 0
   _patrolPoints: []
@@ -64249,9 +64253,9 @@ MonoBehaviour:
   _turretMagMax: 0
   turretBarrel: {fileID: 0}
   turretEmptyTip: {fileID: 0}
-  audioSrcOne: {fileID: 0}
-  audioSrcTwo: {fileID: 0}
   turretSmoke: {fileID: 0}
+  audioSrcOne: {fileID: 3871296355271163695}
+  audioSrcTwo: {fileID: 0}
 --- !u!195 &3871296355271163692
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -64301,11 +64305,107 @@ CapsuleCollider:
   m_GameObject: {fileID: 3871296355271163690}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 1.1440856
   m_Height: 6.1725674
   m_Direction: 1
   m_Center: {x: 0.000000003443997, y: 0.9873476, z: -0.46317288}
+--- !u!82 &3871296355271163695
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871296355271163690}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cb0ee968e8453484bac0b4c33a4f538d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4212807750297538082
 GameObject:
   m_ObjectHideFlags: 0
@@ -64472,6 +64572,7 @@ MonoBehaviour:
   _isRangeAI: 0
   _isTurretAI: 1
   _isFighterAI: 0
+  enemyLaser: {fileID: 0}
   _patrolWaiting: 0
   _totalWaitTime: 0
   _patrolPoints: []
@@ -64482,9 +64583,9 @@ MonoBehaviour:
   _turretMagMax: 35
   turretBarrel: {fileID: 9059487720292960083}
   turretEmptyTip: {fileID: 5096273386706947331}
+  turretSmoke: {fileID: 2015260784}
   audioSrcOne: {fileID: 4466470386424108631}
   audioSrcTwo: {fileID: 4466470386424108633}
-  turretSmoke: {fileID: 2015260784}
 --- !u!82 &4466470386424108633
 AudioSource:
   m_ObjectHideFlags: 0

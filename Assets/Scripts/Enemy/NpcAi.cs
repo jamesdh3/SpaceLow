@@ -18,7 +18,9 @@ public class NpcAi : MonoBehaviour
     [SerializeField]
     private Transform _moveToThisDestination;
     public bool _isRangeAI, _isTurretAI, _isFighterAI;
-    private float _fly_height; // for flying enemies 
+    private float _fly_height; // for flying enemies
+    [SerializeField]
+    private GameObject enemyLaser;
 
     // AI PATROL ***********************
 
@@ -51,12 +53,10 @@ public class NpcAi : MonoBehaviour
     [SerializeField]
     private Transform turretBarrel;
     public Transform turretEmptyTip;
+    public ParticleSystem turretSmoke;
 
     // GENERAL SOUND ***********************
     public AudioSource audioSrcOne, audioSrcTwo;
-
-    //Particle System
-    public ParticleSystem turretSmoke;
 
     public void Awake()
     {
@@ -69,6 +69,11 @@ public class NpcAi : MonoBehaviour
         _isReloading = false;
         checkRangeStatus();
         CheckForPatrolPoints();
+
+        if (_targetInSightRange && !_targetInAttackRange && !_isTurretAI)
+        {
+            StartCoroutine(RobotLaserToggle());
+        }
     }
 
     public void Update()
@@ -295,7 +300,7 @@ public class NpcAi : MonoBehaviour
         if (!_alreadyAttacked)
         {
             Instantiate(_projectile, transform.position, transform.rotation);
-            audioSrcOne.Play();  //Can I reusue same name if this never being called from other AI type?
+            audioSrcOne.Play();
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _attackDelay);
         }
@@ -305,6 +310,19 @@ public class NpcAi : MonoBehaviour
     {
         Vector3 target = _targetTransform.transform.position;
         _agentIfNPCMoves.SetDestination(target);
+        enemyLaser.SetActive(true);
+        audioSrcOne.Play();
+    }
+
+    private IEnumerator RobotLaserToggle()
+    {
+        while (enemyLaser)
+        {
+            yield return new WaitForSeconds(3);
+            audioSrcOne.Stop();
+            enemyLaser.SetActive(false);
+        }
+
     }
 
     void SetMoveDestination()
