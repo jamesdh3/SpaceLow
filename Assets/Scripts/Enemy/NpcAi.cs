@@ -55,6 +55,9 @@ public class NpcAi : MonoBehaviour
     // GENERAL SOUND ***********************
     public AudioSource audioSrcOne, audioSrcTwo;
 
+    //Particle System
+    public ParticleSystem turretSmoke;
+
     public void Awake()
     {
         _turretMagCount = _turretMagMax;
@@ -255,6 +258,7 @@ public class NpcAi : MonoBehaviour
             Instantiate(_projectile, turretEmptyTip.transform.position, turretEmptyTip.transform.rotation);
             audioSrcOne.Play();
             audioSrcTwo.Stop();
+            turretSmoke.Stop();
             _turretMagCount--;
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _attackDelay);
@@ -265,6 +269,7 @@ public class NpcAi : MonoBehaviour
         {
             _isReloading = true;
             audioSrcTwo.Play();
+            turretSmoke.Play();
             Invoke(nameof(Reload), _turretReloadTime);
         }
     }
