@@ -69,11 +69,6 @@ public class NpcAi : MonoBehaviour
         _isReloading = false;
         checkRangeStatus();
         CheckForPatrolPoints();
-
-        if (_targetInSightRange && !_targetInAttackRange && !_isTurretAI)
-        {
-            StartCoroutine(RobotLaserToggle());
-        }
     }
 
     public void Update()
@@ -310,18 +305,7 @@ public class NpcAi : MonoBehaviour
     {
         Vector3 target = _targetTransform.transform.position;
         _agentIfNPCMoves.SetDestination(target);
-        enemyLaser.SetActive(true);
         audioSrcOne.Play();
-    }
-
-    private IEnumerator RobotLaserToggle()
-    {
-        while (enemyLaser)
-        {
-            yield return new WaitForSeconds(3);
-            audioSrcOne.Stop();
-            enemyLaser.SetActive(false);
-        }
 
     }
 
